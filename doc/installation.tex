@@ -1,0 +1,62 @@
+\section{Installation}
+
+\subsection{Requirements}
+The theme is an addendum for the \emph{\LaTeX} \emph{\texttt{beamer}} class, hence it is assumed that you have a running \LaTeX{} installation together with the \texttt{beamer} package \cite{Tantau:2008:LBC} and its dependencies. If not already the case, it will also certainly be a good idea to make yourself familiar with the \texttt{beamer} class. The excellent manual \cite{Tantau:2007:UGB} is will serve you well.
+%Basically, it is straightforward to adapt your \texttt{beamer} presentation to the official UA design. After placing files somewhere into the \TeX{} file tree (see above), the only this necessary 
+
+\subsection{Getting the package}
+
+The package is distributed on the maintainer's website \cite{Schloemer:2009:website}. You can get the latest releases there, as well as additional information about the package. If you would like to stay on the bleeding edge of development, you can have read access to the Subversion repository by typing
+\begin{lstlisting}
+$ svn co svn://macos.cmi.ua.ac.be:\
+> /home/wins/toegw/nschloe/svnrepos/ua-beamer
+\end{lstlisting}
+
+
+\subsection{First run}
+Once you have the files, all that is required for the theme to work is putting the files into a directory where \LaTeX{} can find them. If you would like to install it for one user only, this would typically be \lstinline{~/texmf/} (on Unix). For all other options please refer to the documentation of your \LaTeX{} package manager.
+
+You can check if \LaTeX{} finds the files in its directories by, for example, looking for the file \lstinline!beamerfontthemeUniversiteitAntwerpen.sty!,
+\begin{lstlisting}
+$ kpsewhich beamerfontthemeUniversiteitAntwerpen.sty
+\end{lstlisting}
+
+If everything seems okay, you can check whether you can actually produce a presentation with the UA theme by either creating a minimal test file (see listing \ref{listing:minex}) or by compiling the \LaTeX-document provided in the \lstinline!example/! folder of this package. 
+
+
+\begin{figure}
+\centering
+\setlength{\figurewidth}{6cm}
+\subfloat[][The first two pages with light theming (default).]{%
+\frame{\includegraphics[width=\figurewidth]{figures/light-page1}}%
+\qquad
+\frame{\includegraphics[width=\figurewidth]{figures/light-page2}}%
+}
+
+\subfloat[][The first two pages with dark theming (option \lstinline!dark!).]{%
+\frame{\includegraphics[width=\figurewidth]{figures/dark-page1}}%
+\qquad
+\frame{\includegraphics[width=\figurewidth]{figures/dark-page2}}%
+}
+
+\caption{The first two pages of PDF output of the example file in \lstinline!example/!, with light and dark theming. The theme is loaded with the option \lstinline!framenumber! and the \texttt{beamer} package itself with \lstinline!compress!. Note that it is also possible the combine the dark title page with light content pages (option \lstinline!darktitle!, see below).}
+\label{fig:example1}
+\end{figure}
+
+\begin{note}
+You might need to install more \LaTeX{} packages when running the provided example file (e.g., the \texttt{lipsum} package).
+\end{note}
+
+\begin{lstlisting}[float,caption={A minimalistic test file for the UA Beamer theme.},captionpos=b,label=listing:minex,abovecaptionskip=\bigskipamount]
+\documentclass{beamer}
+
+\usetheme{UniversiteitAntwerpen}
+
+\begin{document}
+
+\begin{frame}
+Hello world!
+\end{frame}
+
+\end{document}
+\end{lstlisting}

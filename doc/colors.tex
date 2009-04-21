@@ -1,0 +1,187 @@
+\section{Colors}
+
+\subsection{Background on the official colors}
+
+\begin{note}
+If you don't care about the technical details, you can skip this and directly go to subsection \ref{subsection:usingthecolors}.
+\end{note}
+
+The two official colors of the UA, a blue and a red tone, are originally given in PMS format, a \emph{proprietary} format issued by the Pantone Inc.\ corporation. One particular feature of the PMS color format is that it is, as opposed to RGB or CMYK, \emph{device independent}. This means that the definition of the color does not consist of instructions such as \enquote{put 37\% red, 12\% green, and 45\% blue and mix it all together}, but really is a concise description of what the final result, be it printed or displayed, physically looks like on the medium under determined ambient light conditions.
+
+The PMS format is richer than RGB in the sense that it can embrace fluorescence effects, gold or silver shine, special coatings (matte and brilliant), in general everything that has to do with the actual appearance of the color on the medium. It comes thus as no surprise that there is no (exact) mapping between the PMS and RGB color spaces; more specifically: the mapping -- if it exists -- is device-dependent.
+
+The \emph{only} way to get a perfect PMS 1955 red, for example, is to have a the plot file ready with the (proprietary) PMS color information in it, and have it printed on a PMS-ready printer which needs to be filled the special PMS 1955 ink beforehand. This process is eponymous for colors which are not composed of different types of (yellow, blue, red) inks: they are called \emph{single-spot colors}, and most Pantone\textsuperscript{\textregistered} colors are of such kind.
+
+
+\subsection{Conversion to RGB/CMYK}
+
+When the computer screen or any other non-PMS-ready medium is the primary output source, having such rigorous rules may be rather obstructive. To overcome such restrictions, many vendors of graphical software try to translate PMS into RGB/CMYK by making use of special monitor color calibration data (e.g., the ICC color profiles, \lstinline!.icc!). Unfortunately, if files containing PMS color information are displayed (printed) with programs (printers) which do not support PMS mechanisms (which is most often the case in non-professional environments), the color output will look disturbed. On top of that, and surprisingly for the novice, the output will look disturbed in different ways on different screens (printers) because of the inherent device-dependence of PMS.
+
+%To overcome the undesired side-effects of working with the official UA corporate design in a non-PMS environment (like most beamers and computer screens should provide),
+That is why this theme aims to use non-PMS versions of the UA's official colors, including modified versions of the logos.
+
+\begin{table}
+\centering
+\newlength{\boxsize}
+\setlength{\boxsize}{2cm}
+
+\begin{tabular}{cccc}
+\definecolor{uablue11}{RGB}{  0, 61,100}
+\colorbox{uablue11}{\rule{0mm}{\boxsize}\rule{\boxsize}{0mm}}
+&
+\definecolor{uablue12}{cmyk}{1,0.3,0,0.62}
+\colorbox{uablue12}{\rule{0mm}{\boxsize}\rule{\boxsize}{0mm}}
+&
+\definecolor{uablue13}{RGB}{0,96,128}
+\colorbox{uablue13}{\rule{0mm}{\boxsize}\rule{\boxsize}{0mm}}
+&
+\definecolor{uablue14}{cmyk}{1,0.25,0,0.5}
+\colorbox{uablue14}{\rule{0mm}{\boxsize}\rule{\boxsize}{0mm}}\\[2mm]
+\definecolor{uared11}{RGB}{126,  0, 47}
+\colorbox{uared11}{\rule{0mm}{\boxsize}\rule{\boxsize}{0mm}}
+&
+\definecolor{uared11}{cmyk}{0,1,0.54,0.46}
+\colorbox{uared11}{\rule{0mm}{\boxsize}\rule{\boxsize}{0mm}}
+&
+\definecolor{uared11}{RGB}{161,0,64}
+\colorbox{uared11}{\rule{0mm}{\boxsize}\rule{\boxsize}{0mm}}
+&
+\definecolor{uared11}{cmyk}{0,1,0.6,0.37}
+\colorbox{uared11}{\rule{0mm}{\boxsize}\rule{\boxsize}{0mm}}
+\end{tabular}
+
+\caption{PMS 302 and PMS 1955 translated to CMYK/RGB in different ways. Left to right: UA website \cite{KAN::} RGB, UA website \cite{KAN::} CMYK, conversion chart \cite{::TDC} RGB, conversion chart \cite{::TDC} CMYK. To determine which version is closest to the actual colors PMS 1955 and PMS 302 on your monitor/printer/beamer, you would need a physical color sample (such as provided on the Pantone\textsuperscript{\textregistered} charts) to compare.}
+\label{table:reds-blues}
+\end{table}
+
+Now, as explained above there is no device-independent conversion between the original PMS directives and the CMYK color space; several tables exist which are valid for different work environments. On the official sites of the UA \cite{KAN::}, you'll find particular RGB and CMYK values, other resources, e.g., \cite{::TDC}, provide other numbers (see table \ref{table:reds-blues}).
+
+For the sake of consistency between RGB and CMYK values, the \texttt{beamer} theme uses the CMYK values for PMS 302 and PMS 1955 provided on \cite{::TDC} for reference (see table \ref{table:reds-blues}, last column, and table \ref{table:allcolors}).
+
+\subsection{Using the colors}\label{subsection:usingthecolors}
+
+
+Getting a consistent look-and-feel throughout your presentations requires sticking to a particular style scheme, most of which is being implemented in the \texttt{beamer} style file already. One particular aspect, though, can only be controlled by the user, and that is the colors that are used in the running text, tables, and figures.
+
+Although essentially consistent of only two colors, within \texttt{beamer} referred to as \lstinline!uablue! and \lstinline!uared!, provide more diversity than one might expect and should be  \emph{exclusively} used  in all the slides. The user should be aware that this directive includes \emph{tables, figures, and graphics of most kinds}. For an example of usage see figure \ref{fig:coloredgraphs}.
+
+\begin{figure}
+\setlength{\figurewidth}{10cm}
+\setlength{\figureheight}{5cm}
+\centering
+\input{figures/graphs.tikz}
+\caption{Example usage of the official colors within a set of graphs, using also the exception color.}
+\label{fig:coloredgraphs}
+\end{figure}
+
+If you need to emphasize a particular aspect in your slides (graphs, tables), you can (within \texttt{beamer}) use the \lstinline!\alert{}! macro (e.g., \lstinline!\alert{This is alerted text.}!). For the situation where something needs to stick out in a pie chart, for example, where the ordinary colors (UA blue and red) have been used up already, a third color has been added (see table \ref{table:allcolors}). It is to be used scarcely and strictly for highlighting purposes (see, for example, figure \ref{fig:coloredgraphs}).
+
+
+\begin{table}
+\setlength{\figurewidth}{12mm}
+\centering
+\begin{tabulary}{\textwidth}{LCCC}\toprule
+Color sample & \colorsquare{\figurewidth}{uablue100} & \colorsquare{\figurewidth}{uablue75} & \colorsquare{\figurewidth}{uablue50}\\
+CMYK & (100, 30, 0, 62) & (75, 23, 0, 47) & (50, 15, 0, 31)\\
+RGB  & (0, 61, 100)     & (40, 128, 158)  & (96, 166, 191)\\
+\texttt{beamer} name & \lstinline!uablue100! & \lstinline!uablue75! & \lstinline!uablue50!\\[3mm]
+Color sample & \colorsquare{\figurewidth}{uablue25} & \colorsquare{\figurewidth}{uablue10} & \colorsquare{\figurewidth}{uablue5}\\
+CMYK & (25, 8, 0, 16)  & (10, 3, 0, 6)   & (5, 2, 0, 3)\\
+RGB  & (166, 209, 222) & (218, 235, 242) & (235, 245, 247)\\
+\texttt{beamer} name & \lstinline!uablue25! & \lstinline!uablue10! & \lstinline!uablue5!\\\midrule
+
+Color sample & \colorsquare{\figurewidth}{uared100} & \colorsquare{\figurewidth}{uared75} & \colorsquare{\figurewidth}{uared50}\\
+CMYK & (0, 100, 54, 46) & (0, 75, 41, 35) & (0, 50, 27, 23)\\
+RGB  & (161, 0, 64)     & (184, 46, 101)  & (207, 103, 145)\\
+\texttt{beamer} name & \lstinline!uared100! & \lstinline!uared75! & \lstinline!uared50!\\[3mm]
+Color sample & \colorsquare{\figurewidth}{uared25} & \colorsquare{\figurewidth}{uared10} & \colorsquare{\figurewidth}{uared5}\\
+CMYK & (0, 25, 14, 12)  & (0, 10, 5, 5)   & (0, 5, 3, 2)\\
+RGB  & (232, 174, 197) & (245, 220, 230) & (250, 237, 242)\\
+\texttt{beamer} name & \lstinline!uared25! & \lstinline!uared10! & \lstinline!uared5!\\\midrule
+
+Color sample & \colorsquare{\figurewidth}{vividbrown} & \colorsquare{\figurewidth}{vividbrown75} & \colorsquare{\figurewidth}{vividbrown50}\\
+CMYK & (0, 28, 67, 16) & (0, 20, 48, 12) & (0, 13, 31, 8)\\
+RGB  & (215, 154, 70) & (225, 179, 116)  & (235, 205, 163)\\
+\texttt{beamer} name & \lstinline!vividbrown100! & \lstinline!vividbrown75! & \lstinline!vividbrown50!\\[3mm]
+Color sample & \colorsquare{\figurewidth}{vividbrown25} & \colorsquare{\figurewidth}{vividbrown10} & \colorsquare{\figurewidth}{vividbrown5}\\
+CMYK & (0, 6, 15, 4) & (0, 2, 6, 2) & (0, 1, 3, 1)\\
+RGB  & (245, 230, 209)  & (251, 245, 237) & (253, 250, 246)\\
+\texttt{beamer} name & \lstinline!vividbrown25! & \lstinline!vividbrown10! & \lstinline!vividbrown5!\\\bottomrule
+\end{tabulary}
+
+\caption{Overview over the two main colors used in theme as well as the third color for exceptions and highlighting.}
+\label{table:allcolors}
+\end{table}
+
+%\begin{table}
+%\begin{tabular*}{\textwidth}{cc}
+%\toprule
+%Category 1 &
+%\colorbox{uablue100}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{uablue75}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{uablue50}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{uablue25}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{uablue10}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{uablue5}{\rule{0mm}{5mm}\rule{5mm}{0mm}}\\
+%&
+%\colorbox{uared100}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{uared75}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{uared50}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{uared25}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{uared10}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{uared5}{\rule{0mm}{5mm}\rule{5mm}{0mm}}\\\midrule
+%Category 2 &
+%\colorbox{col22}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col22!75!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col22!50!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col22!25!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col22!10!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col22!5!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}\\
+%&
+%\colorbox{col24}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col24!75!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col24!50!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col24!25!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col24!10!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col24!5!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}\\
+%&
+%\colorbox{col21}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col21!75!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col21!50!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col21!25!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col21!10!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col21!5!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}\\
+%&
+%\colorbox{col42}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col42!75!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col42!50!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col42!25!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col42!10!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col42!5!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}\\\midrule
+%Alert color &
+%\colorbox{col32}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col32!75!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col32!50!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col32!25!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col32!10!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col32!5!white}{\rule{0mm}{5mm}\rule{5mm}{0mm}}\\\bottomrule
+%\end{tabular*}
+%\caption{Color table.}
+%\end{table}
+
+%\colorbox{col11}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col12}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col13}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col14}{\rule{0mm}{5mm}\rule{5mm}{0mm}}\\
+%\colorbox{col21}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col22}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col23}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col24}{\rule{0mm}{5mm}\rule{5mm}{0mm}}\\
+%\colorbox{col31}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col32}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col33}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col34}{\rule{0mm}{5mm}\rule{5mm}{0mm}}\\
+%\colorbox{col41}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col42}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col43}{\rule{0mm}{5mm}\rule{5mm}{0mm}}
+%\colorbox{col44}{\rule{0mm}{5mm}\rule{5mm}{0mm}}

@@ -1,0 +1,52 @@
+\section{Fonts}
+
+To stick entirely to the corporate design of the Universiteit Antwerpen, one is bound to use the official font series \enquote{Auto} of Underware \cite{Underware::ATI}. As stated on the UA website, \textquote[KAN::T][.]{Een weloverwogen en consequente gebruik van typografie is de ruggengraat van een huisstijl.} (A deliberate and consistent use of typography is the backbone of a corporate design.). 
+
+Unfortunately, these fonts are not freely available, not even for university members. In order to make use of the most basic fonts, it would be enough to dispose of the \enquote{Auto 1 office package}, available for \EUR{200} per personal license. The files can be purchased either in TrueType OpenType format (\lstinline!.ttf!) or PostScript Type 1 format (\lstinline!.pfm!). While the PostScrip format is native to \LaTeX{}, it TrueType-fonts can also be used natively in \LaTeX{} with \lstinline!pdflatex!; installation instructions are plenty (e.g., \cite{Rakityansky::TTF}).
+
+
+
+\begin{table}
+\centering
+\newcommand\quickfox{The quick brown fox jumps over the lazy dog. 0123456789}
+\newcommand\ligatures{ff fl fi ffi ij To AV \'e \`a \"a \"o \"u \"{i} \oe{} \ae{} \ss{} - -- --- ?`? \% \& @}
+\begin{tabular}{lll}\toprule
+weight  & shape  & sample\\\midrule
+light   & normal            & {\changefont{ua1}{l}{n}\quickfox}\\
+        &                   & {\changefont{ua1}{l}{n}\ligatures}\\
+        & italic            & {\changefont{ua1}{l}{it}\quickfox}\\
+        &                   & {\changefont{ua1}{l}{it}\ligatures}\\
+        & small caps        & {\changefont{ua1}{l}{sc}\quickfox}\\
+        &                   & {\changefont{ua1}{l}{sc}\ligatures}\\
+        & italic small caps & {\changefont{ua1}{l}{itsc}\quickfox}\\
+        &                   & {\changefont{ua1}{l}{itsc}\ligatures}\\\midrule
+regular & normal            & {\changefont{ua1}{m}{n}\quickfox}\\
+        &                   & {\changefont{ua1}{m}{n}\ligatures}\\
+        & italic            & {\changefont{ua1}{m}{it}\quickfox}\\
+        &                   & {\changefont{ua1}{m}{it}\ligatures}\\
+        & small caps        & {\changefont{ua1}{m}{sc}\quickfox}\\
+        &                   & {\changefont{ua1}{m}{sc}\ligatures}\\
+        & italic small caps & {\changefont{ua1}{m}{itsc}\quickfox}\\
+        &                   & {\changefont{ua1}{m}{itsc}\ligatures}\\\midrule
+bold    & normal            & {\changefont{ua1}{bx}{n}\quickfox}\\
+        &                   & {\changefont{ua1}{bx}{n}\ligatures}\\
+        & italic            & {\changefont{ua1}{bx}{it}\quickfox}\\
+        &                   & {\changefont{ua1}{bx}{it}\ligatures}\\
+        & small caps        & {\changefont{ua1}{bx}{sc}\quickfox}\\
+        &                   & {\changefont{ua1}{bx}{sc}\ligatures}\\
+        & italic small caps & {\changefont{ua1}{bx}{itsc}\quickfox}\\
+        &                   & {\changefont{ua1}{bx}{itsc}\ligatures}\\\midrule
+black   & normal            & {\changefont{ua1}{c}{n}\quickfox}\\
+        &                   & {\changefont{ua1}{c}{n}\ligatures}\\
+        & italic            & {\changefont{ua1}{c}{it}\quickfox}\\
+        &                   & {\changefont{ua1}{c}{it}\ligatures}\\
+        & italic            & {\changefont{ua1}{c}{itlf}\quickfox}\\
+        &                   & {\changefont{ua1}{c}{itlf}\ligatures}\\
+        & small caps        & {\changefont{ua1}{c}{sc}\quickfox}\\
+        &                   & {\changefont{ua1}{c}{sc}\ligatures}\\
+        & italic small caps & {\changefont{ua1}{c}{itsc}\quickfox}\\
+        &                   & {\changefont{ua1}{c}{itsc}\ligatures}\\\bottomrule
+\end{tabular}
+
+\caption{Samples of the font Auto 1 of Underware. All regular and italic versions are available with lining and text figures.}
+\end{table}

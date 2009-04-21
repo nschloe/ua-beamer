@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   width="1436"
+   height="930"
+   version="1.0"
+   sodipodi:docname="uaBackgroundLightBlue.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs5">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective9" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-height="840"
+     inkscape:window-width="1440"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showgrid="true"
+     inkscape:zoom="0.5"
+     inkscape:cx="228.70714"
+     inkscape:cy="398.58744"
+     inkscape:window-x="-5"
+     inkscape:window-y="35"
+     inkscape:current-layer="svg2">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2386" />
+  </sodipodi:namedview>
+  <path
+     style="fill:#3a5f86"
+     d="M 253.5,928.32863 C 172.93489,925.62077 93.075173,916.13497 27.5,901.48418 C 16.5,899.02656 5.8125,896.54108 3.75,895.96089 L 0,894.90599 L 0,0 L 1436,0 L 1436,838.27536 L 1430.75,837.66942 C 1350.277,828.38143 1258.4378,826.81023 1160.5,833.04595 C 1042.5717,840.55448 920.55596,856.27119 761,884.50512 C 617.88794,909.82925 496.1226,923.67369 378.5,927.99449 C 354.78625,928.86561 275.76127,929.07684 253.5,928.32863 z"
+     id="path2384"
+     sodipodi:nodetypes="csccccccsssc" />
+</svg>

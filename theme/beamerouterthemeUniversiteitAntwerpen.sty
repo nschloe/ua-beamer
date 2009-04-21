@@ -1,0 +1,253 @@
+% Copyright 2009 by Nico Schlömer
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+% UA page geometry
+% \geometry{paperheight=7.5in,paperwidth=10.0in}
+% ... Hang on! As suggested in the manual, don't mess around with beamer's
+% assumed page dimensions (128mm x 96mm). Fonts, for example, do no get 
+% automatically scaled and will look tiny if the above is executed.
+% Instead, define a multiplicator 12.8/(10.0*2.54) = 64/127 and adjust all
+% respective lengths.
+
+
+% ----------------------------------------------------------------------------
+% *** required packages <<<
+% ----------------------------------------------------------------------------
+\RequirePackage{calc}
+\RequirePackage{ifthen}
+% ----------------------------------------------------------------------------
+% *** END required packages >>>
+% ----------------------------------------------------------------------------
+
+\mode<presentation>
+
+% ----------------------------------------------------------------------------
+% *** DEFINE LENGTHS <<<
+% ----------------------------------------------------------------------------
+\newlength{\margin}
+\setlength{\margin}{0.8832cm}% 0.69in* 64/127 *2.54cm/in
+
+\newlength{\ulogowidth}
+\setlength{\ulogowidth}{1.1136cm}% 0.87in* 64/127 *2.54cm/in
+\newlength{\ulogoheight}
+\setlength{\ulogoheight}{0.90066895151709692cm}% 0.70364761837273193in* 64/127 *2.54cm/in
+\ifbeamer@dark\else%
+  \newlength{\ulogopadding}
+  % padding = distance from the rightmost point of the logo to where the U starts;
+  % value approximately \ulogowidth*0.25
+  \setlength{\ulogopadding}{0.2784cm}
+\fi
+% ----------------------------------------------------------------------------
+% *** END DEFINE LENGTHS >>>
+% ----------------------------------------------------------------------------
+
+
+% ----------------------------------------------------------------------------
+% *** DEFINE IMAGES <<<
+% ----------------------------------------------------------------------------
+\pgfdeclareimage[width=\ulogowidth]{ULogo}{logo_UA_U_kl3}
+
+% The text logo is a bit of a special case:
+% As given in the PowerPoint(R) slides, the logo is 3.12''x0.36'', the picture file
+% 449px x 52px. However, in the picture file, there is a margin of
+% left: 3px, right: 3px, top: 8px, bottom: 2px.
+% The PDF that we use here does not have any margins, so adapt the sizes here.
+\newlength{\textlogoheight}
+\setlength{\textlogoheight}{0.37218461538461539cm}% 0.36in* 64/127 *2.54cm/in * 42px/52px
+\pgfdeclareimage[height=\textlogoheight]{uTextColor}{logo_UA_tekst_kl}
+
+\ifthenelse{ \boolean{beamer@dark} \OR \boolean{beamer@darktitle} }
+% then
+{\pgfdeclareimage[width=\paperwidth]{uaBackgroundDark}{uaBackgroundDarkBlue}}
+%else
+{}
+
+\ifbeamer@dark%
+  \pgfdeclareimage[width=\paperwidth]{uaBackgroundLight}{uaBackgroundLightBlue}
+\else%
+  \newlength{\wavewidth}
+  \setlength{\wavewidth}{11.6352cm}% 9.09in* 64/127 *2.54cm/in
+  \newlength{\waveheight}
+  \setlength{\waveheight}{0.7936cm}% 0.62in* 64/127 *2.54cm/in
+  \pgfdeclareimage[width=\wavewidth,height=\waveheight]{uWave}{uabottomwave}
+\fi
+% ----------------------------------------------------------------------------
+% *** END DEFINE IMAGES <<<
+% ----------------------------------------------------------------------------
+
+
+
+% ----------------------------------------------------------------------------
+% *** HEADLINE <<<
+% ----------------------------------------------------------------------------
+\ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }{
+ % \defbeamertemplate*{headline}{ua theme}{}%
+}{
+  \newlength{\logotopmargin}%
+  \setlength{\logotopmargin}{0.704cm}%  0.55in* 64/127 *2.54cm/in
+  \defbeamertemplate*{headline}{ua theme}%
+  {%
+    \vskip\logotopmargin%
+    \hskip\margin%
+    \ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
+    {%
+      \vskip5cm% TODO: get rid of this quirk
+    }
+    {%
+      \pgfuseimage{ULogo}%
+    }
+  }
+}
+% ----------------------------------------------------------------------------
+% *** END HEADLINE <<<
+% ----------------------------------------------------------------------------
+
+
+
+% ----------------------------------------------------------------------------
+% *** FRAMETITLE <<<
+% ----------------------------------------------------------------------------
+\newlength\frametitletopmargin
+\ifbeamer@compress%
+  \setlength{\frametitletopmargin}{0.384cm}% 0.3in* 64/127 *2.54cm/in
+\else
+  \setlength{\frametitletopmargin}{0.9472cm}% 0.74in* 64/127 *2.54cm/in
+\fi
+
+\ifbeamer@dark\else%
+  \newlength{\frametitlewidth}
+  \setlength{\frametitlewidth}{\textwidth-\ulogowidth-\ulogopadding}
+\fi
+
+\defbeamertemplate*{frametitle}{ua theme}
+{%
+  \ifbeamer@dark%
+    % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    \vskip\frametitletopmargin%
+    \raggedleft\insertframetitle\par%
+    % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  \else%
+    \ifbeamer@compress%
+      \nointerlineskip%
+      \vskip-\ulogoheight%
+      \vbox to \ulogoheight{%
+        \vfil%
+        \leftskip=\ulogowidth%
+        \advance\leftskip by\ulogopadding%
+        % TODO: employ `leftskip` here, get rid of \hfill
+        \begin{beamercolorbox}[leftskip=\leftskip]{frame title}%
+        \hfill\insertframetitle\par%
+        \end{beamercolorbox}%
+        \vfil%
+      }%
+    \else%
+      \medskip%
+      \begin{beamercolorbox}[right]{frame title}%
+        \insertframetitle\par%
+      \end{beamercolorbox}%
+    \fi%
+  \fi%
+}
+% ----------------------------------------------------------------------------
+% *** END FRAMETITLE >>>
+% ----------------------------------------------------------------------------
+
+
+
+% ----------------------------------------------------------------------------
+% *** FOOTLINE <<<
+% ----------------------------------------------------------------------------
+% See the discussion above for the margin (pixel) quirks.
+\newlength{\textlogobottommarginDark}
+% actual bottom margin in the PowerPoint(R) theme: 7.5'' - 6.83'' - 0.36'' + 0.36'' * 2px/52px
+\setlength{\textlogobottommarginDark}{0.41452307692307688cm}% (7.5'' - 6.83'' - 0.36'' + 0.36'' * 2px/52px)* 64/127 *2.54cm/in
+\newcommand\uTextColorPosDark {\pgfpoint{\margin}{\textlogobottommarginDark}}
+
+\newlength{\textlogobottommarginLight}
+% actual bottom margin in the PowerPoint(R) theme: 7.5'' - 6.80'' - 0.36'' + 0.36'' * 2px/52px
+\setlength{\textlogobottommarginLight}{0.45292307692307715cm}% (7.5''-6.80''-0.36''+0.36''*2px/52px)* 64/127 *2.54cm/in
+\newcommand\uTextColorPosLight{\pgfpoint{\margin}{\textlogobottommarginLight}}
+
+\newlength{\logorightmargin}%
+\setlength{\logorightmargin}{12.1344cm}% 9.48in* 64/127 *2.54cm/in
+\newlength{\logobottommargin}%
+\setlength{\logobottommargin}{0.512cm}% 0.4in* 64/127 *2.54cm/in
+\newcommand\posUlogoFoot{\pgfpoint{\logorightmargin}{\logobottommargin}}
+
+\newcommand{\uWavePos}{\pgfpoint{\paperwidth}{0cm}}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\defbeamertemplate*{footline}{ua theme dark}
+{%
+  \ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
+  % *** THEN ***
+  {%
+    \pgftext[left,bottom,at=\uTextColorPosDark]{\pgfuseimage{uTextColor}}%
+    \pgftext[right,bottom,at=\posUlogoFoot]{\pgfuseimage{ULogo}}%
+  }
+  % *** ELSE ***
+  {%
+    \ifthenelse{\c@framenumber=1 \OR \NOT \boolean{beamer@compress}}
+    % then
+    {%
+        \pgftext[left,bottom,at=\uTextColorPosLight]{\pgfuseimage{uTextColor}}%
+    }%
+    % else
+    {}%
+    \pgftext[right,bottom,at=\uWavePos]{\pgfuseimage{uWave}}%
+    \ifbeamer@framenumber%
+      \ifnum\c@framenumber=1\else
+        \pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
+          \usebeamerfont{frame number in foot}%
+          \usebeamercolor[fg]{frame number in foot}\insertframenumber{}/\inserttotalframenumber%
+        }%
+      \fi
+    \fi%
+    }
+}%
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+% ----------------------------------------------------------------------------
+% *** END of FOOTLINE >>>
+% ---------------------------------------------------------------------------- 
+
+
+% ----------------------------------------------------------------------------
+% *** MARGINS <<<
+% ----------------------------------------------------------------------------
+% set left and right text margins
+\setbeamersize{text margin left=\margin,%
+               text margin right=\margin}
+% ----------------------------------------------------------------------------
+% *** END MARGINS >>>
+% ----------------------------------------------------------------------------
+
+
+
+% ----------------------------------------------------------------------------
+% *** BACKGROUND <<<
+% ----------------------------------------------------------------------------
+\defbeamertemplate*{background canvas}{ua theme}
+{%
+  \ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
+  % *** THEN ***
+  {%
+    \ifnum\c@framenumber=1%
+      \pgfuseimage{uaBackgroundDark}
+    \else%
+      \pgfuseimage{uaBackgroundLight}%
+    \fi%
+  }
+  % *** ELSE ***
+  {}
+}
+% ----------------------------------------------------------------------------
+% *** END BACKGROUND <<<
+% ----------------------------------------------------------------------------
+
+\mode
+<all>
