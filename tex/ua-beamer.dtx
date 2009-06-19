@@ -15,9 +15,6 @@
 % \fi
 %
 % \iffalse
-%<style>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-%<style>\ProvidesPackage{auto1}
-%<style>   [2009/06/15 v0.2 Auto 1 support for LaTeX]
 %
 %
 %<*driver>
@@ -25,17 +22,6 @@
 % \usepackage{lmodern}
 \usepackage{MinionPro}
 \usepackage[T1]{fontenc}
-\usepackage{listings}  % include highlighted source code
-\lstset{% general command to set parameter(s)
-basicstyle=\ttfamily, % print whole listing small
-keywordstyle=\color{uablue},
-identifierstyle=,
-commentstyle=\color{olive},
-stringstyle=\color{uared},
-showstringspaces=false,     % no special string spaces
-frame=single,
-language=[LaTeX]TeX
-}
 \usepackage{lipsum}
 \usepackage{microtype}
 \usepackage[british]{babel}
@@ -48,20 +34,9 @@ language=[LaTeX]TeX
 \usepackage{tabulary}
 \usepackage{eurosym}
 \usepackage{siunitx}
-\usepackage{listings}  % include highlighted source code
-\lstset{% general command to set parameter(s)
-basicstyle=\ttfamily, % print whole listing small
-keywordstyle=\color{uablue},
-identifierstyle=,
-commentstyle=\color{olive},
-stringstyle=\color{uared},
-showstringspaces=false,     % no special string spaces
-frame=single,
-language=[LaTeX]TeX
-}
 \hypersetup{
   bookmarksnumbered,
-  colorlinks,
+  colorlinks=false,
   pdfborder={0 0 0},
   citecolor=vividbrown,
   urlcolor=uared75,
@@ -70,13 +45,17 @@ language=[LaTeX]TeX
   pdfkeywords={LaTeX, Beamer, Universiteit Antwerpen}
 }
 
+\IfFileExists{lmodern.sty}{%
+\renewcommand{\sfdefault}{lmss}%
+\renewcommand{\ttdefault}{lmtt}%
+\DeclareMathAlphabet\mathsf{T1}{lmss}{m}{n}%
+}{}
 
 \usepackage[%
 bibtex8=true,
 hyperref=auto
 ]{biblatex}
 \bibliography{bibtex/beamerstyleUa}
-
 
 % =========================================================================
 % define colors
@@ -218,7 +197,7 @@ hyperref=auto
 % \DoNotIndex{\advance,\begingroup,\catcode,\closein}
 % \DoNotIndex{\closeout,\day,\def,\edef,\else,\empty,\endgroup}
 %
-% \title{A \pkg{beamer} presentation class theme for the Universiteit Antwerpen}
+% \title{A \pkg{beamer} presentation class theme for the Universiteit~Antwerpen}
 % \author{Nico~Schl\"omer}
 % \date{\fileversion\ -- \filedate}
 %
@@ -227,7 +206,6 @@ hyperref=auto
 % \begin{abstract}
 % This is a theme for the \LaTeX{} \pkg{beamer} class for presentations. It has been designed to  match the official \acro{UA} templates for \powerpoint{} while doing away with some of the shortcomings of it within the \pkg{beamer} framework. If you would like to give a scientific presentation with all the benefits you get from using \LaTeX{}, this theme is for you.\footnote{Note that there exists another \pkg{beamer} theme for the Universiteit Antwerpen designed by \textsc{Kris Ven} \cite{Ven::BTU}, which has many more options than this package. In contrast to this theme, it is not designed with compliance to the official themes in mind.}
 % 
-% % Moreover, as of this writing, it is not known to the author whether or not that theme is still being made available for download.
 % \end{abstract}
 % \tableofcontents
 %
@@ -250,7 +228,7 @@ hyperref=auto
 % \end{quote}
 % 
 % 
-% \subsection{First run}
+% \subsection{First run}{sec:firstrun}
 % Once you have the files, all that is required for the theme to work is putting the files into a directory where \LaTeX{} can find them. If you
 % would like to install it for one user only, this would typically be |~/texmf/| (on Unix). For all other options please refer to the
 % documentation of your \LaTeX{} package manager.
@@ -260,7 +238,7 @@ hyperref=auto
 % |$ kpsewhich beamerfontthemeUniversiteitAntwerpen.sty|
 % \end{quote}
 % If everything seems okay, you can check whether you can actually produce a presentation with the \acro{UA} theme by either creating a minimal test
-% file (see listing \ref{listing:minex}) or by compiling the \LaTeX-document provided in the |example/| folder of this package. 
+% file (see section~\ref{sec:firstrun}) or by compiling the \LaTeX-document provided in the |example/| folder of this package. 
 % 
 % 
 % \begin{figure}
@@ -272,7 +250,7 @@ hyperref=auto
 % \frame{\includegraphics[width=\figurewidth]{figures/light-page2}}%
 % }
 % 
-% \subfloat[][The first two pages with dark theming (option option{dark}).]{%
+% \subfloat[][The first two pages with dark theming (option \textsf{dark}).]{%
 % \frame{\includegraphics[width=\figurewidth]{figures/dark-page1}}%
 % \qquad
 % \frame{\includegraphics[width=\figurewidth]{figures/dark-page2}}%
@@ -287,36 +265,31 @@ hyperref=auto
 % \begin{note}
 % You might need to install more \LaTeX{} packages when running the provided example file (e.g., the \pkg{lipsum} package).
 % \end{note}
-% 
-% \begin{lstlisting}[float,caption={A minimalistic test file for the \acro{UA} Beamer theme.},captionpos=b,label=listing:minex,abovecaptionskip=\bigskipamount]
-\documentclass{beamer}
-
-\usetheme{UniversiteitAntwerpen}
-
-\begin{document}
-
-\begin{frame}
-Hello world!
-\end{frame}
-
-\end{document}
-% \end{lstlisting}
+% A minimalistic test file for the \acro{UA} Beamer theme would be
 %
-% \section{Options}
-%
-% The theme comes with several options, all of which can be given in a comma-separated list like in
 % \begin{quote}
-% |\usetheme[|\textit{<options>}|]{UniversiteitAntwerpen}|
+% |\documentclass{beamer}|\\
+% |\usetheme{UniversiteitAntwerpen}|\\
+% |\begin{document}|\\
+% |\begin{frame}|\\
+%   |Hello world!|\\
+% |\end{frame}|\\
+% |\end{document}|
 % \end{quote}
 %
+% \section{Options}
+% \DescribeMacro{\usetheme}
+% The theme comes with several options, all of which can be given in a comma-separated list like in
+% \begin{quote}
+% |\usetheme|\oarg{options}|{UniversiteitAntwerpen}|
+% \end{quote}
 % Just like the Universiteit Antwerpen itself provides two different flavors of \powerpoint{} presentations, one
-% with a light background and one with a darker, this \pkg{beamer} themes inherits options for both. By default, the theme applies the light
-% theme, this options switches to the dark counterpart. See figure \ref{fig:example1}.
-% The default settings are marked with an asterisk*.
+% with a light background and one with a darker, this \pkg{beamer} themes inherits options for both (see figure \ref{fig:example1}).
+% The default setting is marked with an asterisk*.
 % 
 % \begin{options}[\option{proportional}, \option{prop}]
-% \item[\option*{light}]      use light version
-% \item[\option{dark}]        use dark (blue) version
+% \item[\option*{light}]      use light theming
+% \item[\option{dark}]        use dark (blue) theming
 % \end{options}
 % \begin{options}[\option{proportional}, \option{prop}]
 % \item[\option{darktitle}]   use title page of the dark theme
@@ -326,17 +299,17 @@ Hello world!
 % \end{options}
 % 
 % \begin{note}
-% The \pkg{beamer} option \option{compress} is respected in the sense that, if it is provided, header and footer will take less space such that
-% there is more space for actual frame content.
+% The \pkg{beamer} option \option{compress} is respected in the sense that, if provided, header and footer will take less space such that
+% there is more room for actual frame content.
 % \end{note}
 %
 % \section{Colors}\label{sec:colors}
 % 
-% \subsection{Background on the official colors}
-% 
 % \begin{note}
 % If you don't care about the technical details, you can skip this and directly go to subsection \ref{subsection:usingthecolors}.
 % \end{note}
+%
+% \subsection{Background on the official colors}
 % 
 % The two official colors of the \acro{UA}, a blue and a red tone, are originally given in \acro{PMS} format, a \emph{proprietary} format issued
 % by the Pantone Inc.\ corporation. One particular feature of the \acro{PMS} color format is that it is, as opposed to \acro{RGB} or \acro{CMYK},
@@ -419,7 +392,7 @@ Hello world!
 % implemented in the \pkg{beamer} style file already. One particular aspect, though, can only be controlled by the user, and that is the colors
 % that are used in the running text, tables, and figures.
 % 
-% Although essentially consistent of only two colors, within \pkg{beamer} referred to as |uablue! and |uared!, provide more
+% Although essentially consistent of only two colors, within \pkg{beamer} referred to as |uablue| and |uared|, provide more
 % diversity than one might expect and should be  \emph{exclusively} used  in all the slides. The user should be aware that this directive
 % includes \emph{tables, figures, and graphics of most kinds}. For an example of usage see figure \ref{fig:coloredgraphs}.
 % 
@@ -477,68 +450,32 @@ Hello world!
 %
 % \section{Fonts}
 % 
-% To stick entirely to the corporate design of the Universiteit Antwerpen, one is bound to use the official font series \enquote{Auto} of Underware \cite{Underware::ATI}. As stated on the \acro{UA} website, \textquote[KAN::T][.]{Een weloverwogen en consequente gebruik van typografie is de ruggengraat van een huisstijl.} (A deliberate and consistent use of typography is the backbone of a corporate design.). 
+% As stated on the \acro{UA} website,
+% \foreignblockquote{dutch}[\cite{KAN::T}][]{Een weloverwogen en consequente gebruik van typografie is de ruggengraat van een huisstijl.}
+% (A deliberate and consistent use of typography is the backbone of a corporate design.).
+%
+% This is certainly true, and it is only by the font that gives a written text its unique character. To embrace this important aspect of the
+% corporate design of the Universiteit Antwerpen, it is thus required to deploy the  the official font 
+% series \enquote{Auto} of Underware \cite{Underware::ATI} in the \acro{UA} documents. A small sample of the Auto 1\texttrademark{}
+% is the following.
+% \begin{quote}
+% \fontfamily{fa1-OsF}\selectfont The quick brown fox jumps over the lazy dog. 0123456789
+% \end{quote}
+% Unfortunately, these fonts are \emph{not} freely available, particularly not even for university members.
+% If you still happen to own the font (e.g., in \acro{TTF} format), then you might want to look at the \LaTeX{} support package \cite{Schloemer:2009:A1F} for
+% usage within the \pkg{beamer} presentation (and all other \LaTeX{} documents of course).
 % 
-% Unfortunately, these fonts are not freely available, not even for university members. In order to make use of the most basic fonts, it would be enough to dispose of the \enquote{Auto 1 office package}, available for \EUR{200} per personal license. The files can be purchased either in TrueType OpenType format (|.ttf|) or PostScript Type 1 format (|.pfm|). While the PostScript format is native to \LaTeX{}, it TrueType fonts can also be used natively in \LaTeX{} with pdf\LaTeX; installation instructions are plenty (e.g., \cite{Rakityansky::TTF}).
-% 
-% 
-% 
-% \begin{table}
-% \centering
-% \newcommand\quickfox{The quick brown fox jumps over the lazy dog.}
-% \newcommand\ligatures{ff fl fi To AV \'e \`a \"a \"o \"u \"{i} \oe{} \ae{} \ss{} - -- --- ?`? \% \& @}
-% \begin{tabular}{lll}\toprule
-% weight  & shape  & sample\\\midrule
-% light   & normal            & {\changefont{fa1-OsF}{l}{n}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{l}{n}\ligatures}\\
-%         & italic            & {\changefont{fa1-OsF}{l}{it}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{l}{it}\ligatures}\\
-%         & small caps        & {\changefont{fa1-OsF}{l}{sc}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{l}{sc}\ligatures}\\
-%         & italic small caps & {\changefont{fa1-OsF}{l}{itsc}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{l}{itsc}\ligatures}\\\midrule
-% regular & normal            & {\changefont{fa1-OsF}{m}{n}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{m}{n}\ligatures}\\
-%         & italic            & {\changefont{fa1-OsF}{m}{it}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{m}{it}\ligatures}\\
-%         & small caps        & {\changefont{fa1-OsF}{m}{sc}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{m}{sc}\ligatures}\\
-%         & italic small caps & {\changefont{fa1-OsF}{m}{itsc}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{m}{itsc}\ligatures}\\\midrule
-% bold    & normal            & {\changefont{fa1-OsF}{b}{n}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{b}{n}\ligatures}\\
-%         & italic            & {\changefont{fa1-OsF}{b}{it}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{b}{it}\ligatures}\\
-%         & small caps        & {\changefont{fa1-OsF}{b}{sc}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{b}{sc}\ligatures}\\
-%         & italic small caps & {\changefont{fa1-OsF}{b}{itsc}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{b}{itsc}\ligatures}\\\midrule
-% black   & normal            & {\changefont{fa1-OsF}{c}{n}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{c}{n}\ligatures}\\
-%         & italic            & {\changefont{fa1-OsF}{c}{it}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{c}{it}\ligatures}\\
-%         & italic            & {\changefont{fa1-OsF}{c}{itlf}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{c}{itlf}\ligatures}\\
-%         & small caps        & {\changefont{fa1-OsF}{c}{sc}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{c}{sc}\ligatures}\\
-%         & italic small caps & {\changefont{fa1-OsF}{c}{itsc}\quickfox}\\
-%         &                   & {\changefont{fa1-OsF}{c}{itsc}\ligatures}\\\bottomrule
-% \end{tabular}
-% 
-% \caption{Samples of the font Auto 1 of Underware. All regular and italic versions are available with lining and text figures.}
-% \end{table}
 %
 % \section{Version history}
 %
 % Version 0.2: ...\\
 % Version 0.1: Initial release\\
 %
-% \printbibliography
-%
 % \StopEventually{\PrintIndex}
 %
 %
 % \newpage
+% \appendix
 % \section{Implementation}
 %
 % \subsection{Main style file}
@@ -692,6 +629,7 @@ Hello world!
 %
 % \subsubsection*{Title page}
 %
+% \begin{macro}{title page}
 %    \begin{macrocode}
 \defbeamertemplate*{title page}{ua theme}
 {
@@ -709,6 +647,7 @@ Hello world!
   \vfill%
 }
 %    \end{macrocode}
+% \end{macro}
 %
 % \subsubsection*{Blocks}
 %
@@ -736,11 +675,11 @@ Hello world!
 %
 % Instead, define a multiplicator
 % \[
-% \alpha = \frac{\SI{128}{\milli\meter}}{\SI{10.0}{\in}\times 25.4\frac{\si{\milli\meter}}{in}} = \frac{64}{127}
+% \alpha = \frac{\SI{128}{\milli\meter}}{\SI{10.0}{in}\times \SI{25.4}{\milli\meter\per in}} = \frac{64}{127}
 % \]
 % which scales all lengths, or rather
 % \[
-% \beta = \alpha\times 25.4\frac{\si{\milli\meter}}{in} = 12.8 \frac{\si{\milli\meter}}{in}
+% \beta = \alpha\times \SI{25.4}{\milli\meter\per in} = \SI{12.8}{\milli\meter\per in}
 % \]
 % which scales a length given in inches by $\alpha$ to a length in millimeters.
 %
@@ -757,21 +696,21 @@ Hello world!
 %
 % \subsubsection{Lengths definition}
 % \[
-% m = 0.69in \hateq \SI{8.832}{\milli\meter}
+% m = \SI{0.69}{in} \hateq \SI{8.832}{\milli\meter}
 % \]
 %    \begin{macrocode}
 \newlength{\margin}
 \setlength{\margin}{8.832mm}
 %    \end{macrocode}
 % \[
-% w = 0.87in \hateq \SI{11.136}{\milli\meter}
+% w = \SI{0.87}{in} \hateq \SI{11.136}{\milli\meter}
 % \]
 %    \begin{macrocode}
 \newlength{\ulogowidth}
 \setlength{\ulogowidth}{11.136mm}
 %    \end{macrocode}
 % \[
-% w = 0.70364761837273193in \hateq \SI{9.0066895151709692}{\milli\meter}
+% w = \SI{0.70364761837273193}{in} \hateq \SI{9.0066895151709692}{\milli\meter}
 % \]
 %    \begin{macrocode}
 \newlength{\ulogoheight}
@@ -802,7 +741,7 @@ Hello world!
 % the picture file, a a margin of \{left: 3px, right: 3px, top: 8px, bottom: 2px\} is contained.
 % The \acro{PDF} snippet that we use here does not have any margins, so adapt the sizes,
 % \[
-% t = 0.36in \times \frac{42px}{52px}  \hateq \SI{3.7218461538461539}{\milli\meter}.
+% t = \SI{0.36}{in} \times \frac{42px}{52px}  \hateq \SI{3.7218461538461539}{\milli\meter}.
 % \]
 %    \begin{macrocode}
 \newlength{\textlogoheight}
@@ -826,7 +765,7 @@ Hello world!
 %
 % Define dimension of the wave image at the bottom of the page (light theme).
 % \[
-%  w = 9.09in \hateq \SI{116.352}{\milli\meter}
+%  w = \SI{9.09}{in} \hateq \SI{116.352}{\milli\meter}
 % \]
 %
 %    \begin{macrocode}
@@ -835,7 +774,7 @@ Hello world!
 %    \end{macrocode}
 %
 % \[
-%  h = 0.62in \hateq \SI{7.936}{\milli\meter}
+%  h = \SI{0.62}{in} \hateq \SI{7.936}{\milli\meter}
 % \]
 %
 %    \begin{macrocode}
@@ -849,78 +788,162 @@ Hello world!
 %    \end{macrocode}
 %
 % \subsubsection{Frame headline}
-%
+% Define the look of the frame headline. This is \emph{not} the frame title (see below).
 %    \begin{macrocode}
-\ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }{
- % \defbeamertemplate*{headline}{ua theme}{}%
-}{
+\ifthenelse{ \boolean{beamer@dark}
+             \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
+%    \end{macrocode}
+% Don't define anthing in the case of the dark theme.
+%    \begin{macrocode}
+{}
+%    \end{macrocode}
+% Definition for of |headline| for the light theme.
+%    \begin{macrocode}
+{
+%    \end{macrocode}
+% Define the `U' logo top margin for the light theme,
+% \[
+% t = \SI{0.55}{in} \hateq \SI{7.04}{\milli\meter}.
+% \]
+%    \begin{macrocode}
   \newlength{\logotopmargin}%
-  \setlength{\logotopmargin}{0.704cm}%  0.55in* 64/127 *2.54cm/in
+  \setlength{\logotopmargin}{7.04mm}%
+%    \end{macrocode}
+%
+% \begin{macro}{headline}
+% Finally define |headline|.
+%    \begin{macrocode}
   \defbeamertemplate*{headline}{ua theme}%
   {%
-    \vskip\logotopmargin%
-    \hskip\margin%
-    \ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
+%   \leavevmode%
+%   \hbox{\pgftext[left,top,at=\pgfpoint{\margin}{-\logotopmargin}]{\pgfuseimage{ULogo}}}
+%     \vskip\logotopmargin%
+%     \hskip\margin%
+    \ifthenelse{ \boolean{beamer@dark}%
+                 \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }%
     {%
-      \vskip5cm% TODO: get rid of this quirk
-    }
+%       \vskip5cm% TODO: get rid of this quirk
+    }%
     {%
-      \pgfuseimage{ULogo}%
+%         \vskip\logotopmargin% these lines also moves the dark title page; why??
+        \hskip\beamer@leftmargin%
+%         \vrule width \ulogowidth height \ulogoheight%
+% --------------
+% pull the following "text" back by \beamer@sidebarwidth
+% this has the effect as if the sidebar wasn't there.
+%         \hskip-\ulogowidth%
+% --------------
+% \hbox to \beamer@sidebarwidth{\hss blabla \hss} centers horizontally;
+% \vbox to \beamer@headheight  {\vss blabla \vss} centers vertically;
+%         \hbox to \ulogowidth{%
+%            \vbox to \ulogoheight{%
+%                \hbox{\color{fg}\insertlogo}%
+%            \vss}%
+%         \hss}%
+%         \newcommand\uColorPos{\pgfpoint{0cm}{0cm}}
+%         \pgftext[left,bottom,at=\pgfpoint{0cm}{0cm}]{\color{red}ABCCCCCCCCCCC}
+%\pgfuseimage{ULogo}%
     }
   }
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 }
 %    \end{macrocode}
+% \end{macro}
 %
 % \subsubsection{Frame title}
 %
 %    \begin{macrocode}
 \newlength\frametitletopmargin
 \ifbeamer@compress%
-  \setlength{\frametitletopmargin}{0.384cm}% 0.3in* 64/127 *2.54cm/in
+%    \end{macrocode}
+% \[
+%   t = \SI{0.3}{in} \hateq \SI{3.84}{\milli\meter}
+% \]
+%    \begin{macrocode}
+  \setlength{\frametitletopmargin}{3.84mm}
 \else
-  \setlength{\frametitletopmargin}{0.9472cm}% 0.74in* 64/127 *2.54cm/in
+%    \end{macrocode}
+% \[
+%   t = \SI{0.74}{in} \hateq \SI{9.472}{\milli\meter}
+% \]
+%    \begin{macrocode}
+  \setlength{\frametitletopmargin}{9.472mm}
 \fi
 
 \ifbeamer@dark\else%
   \newlength{\frametitlewidth}
   \setlength{\frametitlewidth}{\textwidth-\ulogowidth-\ulogopadding}
 \fi
-
+%    \end{macrocode}
+%
+% \begin{macro}{frametitle}
+% Define the frame title.
+%    \begin{macrocode}
 \defbeamertemplate*{frametitle}{ua theme}
 {%
   \ifbeamer@dark%
-    % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%    \end{macrocode}
+% Skip the top margin to |\frametitletopmargin| and have the text aligned right. There might be better ways to enfore the
+% top margin than |\vskip|.
+%    \begin{macrocode}
     \vskip\frametitletopmargin%
     \raggedleft\insertframetitle\par%
-    % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%    \end{macrocode}
+%    \begin{macrocode}
   \else%
+%    \end{macrocode}
+% Things are somewhat more complicated in the light theme layout.
+%    \begin{macrocode}
     \ifbeamer@compress%
+%    \end{macrocode}
+% If the \option{compress} option is pulled, the frame title needs to be aligned next to the \acro{UA} `U' logo which resides
+% at the top left of the page. Also, the padding of the logo has to be respected.
+%
+% |\nointerlineskip| removes the line skip before the frame title.
+%    \begin{macrocode}
       \nointerlineskip%
+%    \end{macrocode}
+% The following moves the frame title preliminarily to the top of the headline.
+%    \begin{macrocode}
       \vskip-\ulogoheight%
+%    \end{macrocode}
+% The |\vbox| construction with the two |\vfil|s ensures vertical centration.
+% Note that |\vss| would not do the job as good as (upward) overflow is undesired here.
+%    \begin{macrocode}
       \vbox to \ulogoheight{%
-        \vfil%
-        \leftskip=\ulogowidth%
-        \advance\leftskip by\ulogopadding%
-        % TODO: employ `leftskip` here, get rid of \hfill
-        \begin{beamercolorbox}[leftskip=\leftskip]{frame title}%
-        \hfill\insertframetitle\par%
-        \end{beamercolorbox}%
-        \vfil%
+          \vfil%
+%    \end{macrocode}
+% The |plus1fill| ensures that the text is flush right. Curiously, |plus1fil| is not enough here.
+%    \begin{macrocode}
+          \advance\leftskip by1.5cm plus1fill%
+          {\usebeamercolor[fg]{frametitle}\usebeamerfont{frametitle}\insertframetitle\par}%
+          {\usebeamercolor[fg]{framesubtitle}\usebeamerfont{framesubtitle}\insertframesubtitle\par}%
+          \vfil%
       }%
     \else%
+%    \end{macrocode}
+% If the \option{compress} is \emph{not} given -- and that is the \powerpoint{} templates' default --, then the frame title
+% is aligned flush left just \emph{below} the logo. We deploy a |\medskip| here while this should in fact be the logo's
+% demanded padding.
+%    \begin{macrocode}
       \medskip%
       \begin{beamercolorbox}[right]{frame title}%
         \insertframetitle\par%
       \end{beamercolorbox}%
+%    \end{macrocode}
+%
+%    \begin{macrocode}
     \fi%
   \fi%
 }
 %    \end{macrocode}
+% \end{macro}
 %
 % \subsubsection{Footline headline}
-%
-%    \begin{macrocode}
 % See the discussion above for the margin (pixel) quirks.
+%    \begin{macrocode}
 \newlength{\textlogobottommarginDark}
 % actual bottom margin in the PowerPoint(R) theme: 7.5'' - 6.83'' - 0.36'' + 0.36'' * 2px/52px
 \setlength{\textlogobottommarginDark}{0.41452307692307688cm}% (7.5'' - 6.83'' - 0.36'' + 0.36'' * 2px/52px)* 64/127 *2.54cm/in
@@ -938,17 +961,26 @@ Hello world!
 \newcommand\posUlogoFoot{\pgfpoint{\logorightmargin}{\logobottommargin}}
 
 \newcommand{\uWavePos}{\pgfpoint{\paperwidth}{0cm}}
-
-% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%    \end{macrocode}
+%
+% \begin{macro}{footline}
+% Define the footline.
+%    \begin{macrocode}
 \defbeamertemplate*{footline}{ua theme dark}
 {%
-  \ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
-  % *** THEN ***
+  \ifthenelse{ \boolean{beamer@dark} 
+               \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
+%    \end{macrocode}
+% For the dark theme, pull in the \acro{UA} text logo and the `U' logo.
+%    \begin{macrocode}
   {%
     \pgftext[left,bottom,at=\uTextColorPosDark]{\pgfuseimage{uTextColor}}%
     \pgftext[right,bottom,at=\posUlogoFoot]{\pgfuseimage{ULogo}}%
   }
-  % *** ELSE ***
+%    \end{macrocode}
+% For the light theme, only display the \acro{UA} text logo at the bottom left when the \pkg{beamer} option
+% \option{compress} is not given, and in any case on the title page.
+%    \begin{macrocode}
   {%
     \ifthenelse{\c@framenumber=1 \OR \NOT \boolean{beamer@compress}}
     % then
@@ -957,7 +989,13 @@ Hello world!
     }%
     % else
     {}%
+%    \end{macrocode}
+% In any case, pull in the wave image.
+%    \begin{macrocode}
     \pgftext[right,bottom,at=\uWavePos]{\pgfuseimage{uWave}}%
+%    \end{macrocode}
+% Insert the frame number.
+%    \begin{macrocode}
     \ifbeamer@framenumber%
       \ifnum\c@framenumber=1\else
         \pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
@@ -968,26 +1006,31 @@ Hello world!
     \fi%
     }
 }%
-% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 %    \end{macrocode}
+% \end{macro}
 %
 % \subsubsection{Margins}
 %
+% \begin{macro}{text margin left}
+% \begin{macro}{text margin right}
+% Set left and right text margins.
 %    \begin{macrocode}
-% set left and right text margins
 \setbeamersize{text margin left=\margin,%
                text margin right=\margin}
 %    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
 %
 % \subsubsection{Background image}
 %
+% \begin{macro}{background canvas}
+% Set the background canvas if the dark theme is used.
 %    \begin{macrocode}
 \defbeamertemplate*{background canvas}{ua theme}
 {%
   \ifthenelse{ \boolean{beamer@dark} 
                \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
-  % *** THEN ***
   {%
     \ifnum\c@framenumber=1%
       \pgfuseimage{uaBackgroundDark}
@@ -995,10 +1038,16 @@ Hello world!
       \pgfuseimage{uaBackgroundLight}%
     \fi%
   }
-  % *** ELSE ***
+%    \end{macrocode}
+% Otherwise, leave |backgroundcanvas| empty.
+%    \begin{macrocode}
   {}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 }
 %    \end{macrocode}
+% \end{macro}
 %
 %    \begin{macrocode}
 \mode
@@ -1006,6 +1055,7 @@ Hello world!
 %</outer>
 %    \end{macrocode}
 %
+% \printbibliography
 %
 %
 % \CheckSum{0}
