@@ -5,7 +5,10 @@
 % \beamertemplategridbackground{1}
 
 % the official UA font:
-\usepackage[lf]{auto1}
+
+\IfFileExists{Auto1.sty}{
+    \usepackage[lf]{Auto1}
+}
 
 \usepackage{lipsum}
 
