@@ -138,8 +138,9 @@
         \vfil%
         \leftskip=\ulogowidth%
         \advance\leftskip by\ulogopadding%
-        % TODO: employ `leftskip` here, get rid of \hfill
-        \begin{beamercolorbox}[leftskip=\leftskip]{frame title}%
+        % TODO To date (July 4, 2010), the beamer class cannot deal with actual
+        %      variables as arguments to "right". Hence, use the literal.
+        \begin{beamercolorbox}[right=1.1136cm]{frame title}%
         \hfill\insertframetitle\par%
         \end{beamercolorbox}%
         \vfil%
@@ -184,21 +185,22 @@
 \defbeamertemplate*{footline}{ua theme dark}
 {%
   \ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
-  % *** THEN ***
+  % *** THEN *** dark footline
   {%
     \pgftext[left,bottom,at=\uTextColorPosDark]{\pgfuseimage{uTextColor}}%
     \pgftext[right,bottom,at=\posUlogoFoot]{\pgfuseimage{ULogo}}%
   }
-  % *** ELSE ***
+  % *** ELSE *** light footline
   {%
+     % conditionally put the ua text logo on the page
     \ifthenelse{\c@framenumber=1 \OR \NOT \boolean{beamer@compress}}
-    % then
-    {%
-        \pgftext[left,bottom,at=\uTextColorPosLight]{\pgfuseimage{uTextColor}}%
-    }%
-    % else
+    {\pgftext[left,bottom,at=\uTextColorPosLight]{\pgfuseimage{uTextColor}}}%
     {}%
+
+    % bottom wave
     \pgftext[right,bottom,at=\uWavePos]{\pgfuseimage{uWave}}%
+
+    % page number
     \ifbeamer@framenumber%
       \ifnum\c@framenumber=1\else
         \pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
