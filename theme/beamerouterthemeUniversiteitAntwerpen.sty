@@ -189,6 +189,15 @@
   {%
     \pgftext[left,bottom,at=\uTextColorPosDark]{\pgfuseimage{uTextColor}}%
     \pgftext[right,bottom,at=\posUlogoFoot]{\pgfuseimage{ULogo}}%
+    \ifbeamer@framenumber%
+      \ifnum\c@framenumber=1\else
+        \pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
+          \usebeamerfont{frame number in foot}%
+          \usebeamercolor[fg]{frame number in foot}\insertframenumber{}/\inserttotalframenumber%
+        }%
+      \fi%
+    \fi%
+
   }
   % *** ELSE *** light footline
   {%
