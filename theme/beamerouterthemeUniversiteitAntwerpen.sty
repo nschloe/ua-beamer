@@ -193,7 +193,11 @@
       \ifnum\c@framenumber=1\else
         \pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
           \usebeamerfont{frame number in foot}%
-          \usebeamercolor[fg]{frame number in foot}\insertframenumber{}/\inserttotalframenumber%
+          \ifbeamer@nototalframenumber%
+            \usebeamercolor[fg]{frame number in foot}\insertframenumber{}%
+          \else
+            \usebeamercolor[fg]{frame number in foot}\insertframenumber{}/\inserttotalframenumber%
+          \fi
         }%
       \fi%
     \fi%
@@ -214,7 +218,11 @@
       \ifnum\c@framenumber=1\else
         \pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
           \usebeamerfont{frame number in foot}%
-          \usebeamercolor[fg]{frame number in foot}\insertframenumber{}/\inserttotalframenumber%
+          \ifbeamer@nototalframenumber%
+            \usebeamercolor[fg]{frame number in foot}\insertframenumber{}%
+          \else
+            \usebeamercolor[fg]{frame number in foot}\insertframenumber{}/\inserttotalframenumber%
+          \fi
         }%
       \fi
     \fi%
