@@ -6,7 +6,7 @@ The theme comes with several options, all of which can be given in a comma-separ
 \end{lstlisting}
 
 \begin{center}
-\begin{tabulary}{12cm}{p{2cm}L}\toprule
+\begin{tabulary}{12cm}{p{3.75cm}J}\toprule
 \lstinline!dark!
 &
 Just like the Universiteit Antwerpen itself provides two different flavors of PowerPoint\textsuperscript{\textregistered} presentations, one with a light background and one with a darker, this \texttt{beamer} themes inherits options for both. By default, the theme applies the light theme, this options switches to the dark counterpart. See figure \ref{fig:example1}.\\\midrule
@@ -15,7 +15,13 @@ Just like the Universiteit Antwerpen itself provides two different flavors of Po
 With \lstinline!darktitle! (and not \lstinline!dark!), the title page will have a dark background while all other slides will retain the light background.\\\midrule
 \lstinline!framenumber!
 &
-With the light scheme, the \lstinline!framenumber! option makes sure that the number of the current frame as well as the total number of frames is displayed in the right lower corner of each frame. Does not do anything with the dark variant (see option \lstinline!dark!).\\\bottomrule
+With the light scheme, the \lstinline!framenumber! option makes sure that the number of the current frame as well as the
+total number of frames is displayed in the right lower corner of each frame. Does not do anything with the dark variant
+(see option \lstinline!dark!).\\\midrule
+\lstinline!nototalframenumber!
+&
+With \lstinline!nototalframenumber! only the current frame number is displayed in the lower right corner of each frame.
+This does nothing when \lstinline!framenumber! is not activated.\\\bottomrule
 \end{tabulary}
 \end{center}
 
