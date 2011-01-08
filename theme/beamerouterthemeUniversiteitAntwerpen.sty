@@ -1,4 +1,4 @@
-% Copyright 2009 by Nico Schlömer
+% Copyright 2009--2011 by Nico Schlömer
 %
 % This file may be distributed and/or modified
 %
@@ -205,7 +205,10 @@
       \ifnum\c@framenumber=1\else
         \pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
           \usebeamerfont{frame number in foot}%
-          \usebeamercolor[fg]{frame number in foot}\insertframenumber{}/\inserttotalframenumber%
+          \usebeamercolor[fg]{frame number in foot}\insertframenumber{}%
+          \ifbeamer@totalframenumber%
+            /\inserttotalframenumber%
+          \fi
         }%
       \fi
     \fi%
