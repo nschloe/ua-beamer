@@ -2,8 +2,8 @@
 
 # ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
-ECHOCMD:=/bin/echo -e
-PDFLATEX:=pdflatex
+LATEXMK:=latexmk
+LATEXMK_OPTIONS:=-pdf
 
 # ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
@@ -15,27 +15,17 @@ TARGET:=beamerstyleUaDocumentation
 default: main
 
 main:
-	@$(PDFLATEX) $(TARGET)
+	@$(LATEXMK) $(LATEXMK_OPTIONS) $(TARGET)
 
 .PHONY: clean
 
 clean:
-	@rm -f $(TARGET).aux \
-	       $(TARGET).log \
-	       $(TARGET).nav \
-	       $(TARGET).out \
+	$(LATEXMK) -C
+	@rm -f $(TARGET)-blx.bib \
 	       $(TARGET).snm \
-	       $(TARGET).toc \
-	       $(TARGET).vrb \
-	       $(TARGET).pdf \
-	       $(TARGET).dvi \
-	       $(TARGET).ps  \
+	       $(TARGET).nav \
 	       $(TARGET).bbl \
-	       $(TARGET).blg \
 	       $(TARGET).thm \
-	       $(TARGET).brf \
-	       $(TARGET).tex.bak \
-	       $(TARGET)-blx.bib \
-	       missfont.log  \
-	       x.log
-	@rm -f *~
+	       $(TARGET).run.xml \
+	       missfont.log \
+	       *~
