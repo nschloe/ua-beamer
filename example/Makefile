@@ -2,8 +2,7 @@
 
 # ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
-ECHOCMD:=/bin/echo -e
-PDFLATEX:=pdflatex
+LATEX:=lualatex
 
 # ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
@@ -15,25 +14,21 @@ TARGET:=uaBeamerExample
 default: main
 
 main:
-	@$(PDFLATEX) $(TARGET)
+	@$(LATEX) $(TARGET)
 
 .PHONY: clean
 
 clean:
-	@rm -f $(TARGET).aux \
+	@rm -f $(TARGET)-blx.bib \
+	       $(TARGET).aux \
 	       $(TARGET).log \
-	       $(TARGET).nav \
 	       $(TARGET).out \
-	       $(TARGET).snm \
-	       $(TARGET).toc \
-	       $(TARGET).vrb \
 	       $(TARGET).pdf \
-	       $(TARGET).dvi \
-	       $(TARGET).ps  \
+	       $(TARGET).toc \
+	       $(TARGET).snm \
+	       $(TARGET).nav \
 	       $(TARGET).bbl \
-	       $(TARGET).blg \
 	       $(TARGET).thm \
-	       $(TARGET).brf \
-	       missfont.log  \
-	       x.log
-	@rm -f *~
+	       $(TARGET).run.xml \
+	       missfont.log \
+	       *~

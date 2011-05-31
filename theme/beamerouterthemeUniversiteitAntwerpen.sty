@@ -1,4 +1,4 @@
-% Copyright 2009 by Nico Schlömer
+% Copyright 2009--2011 by Nico Schlömer
 %
 % This file may be distributed and/or modified
 %
@@ -10,7 +10,7 @@
 % ... Hang on! As suggested in the manual, don't mess around with beamer's
 % assumed page dimensions (128mm x 96mm). Fonts, for example, do no get 
 % automatically scaled and will look tiny if the above is executed.
-% Instead, define a multiplicator 12.8/(10.0*2.54) = 64/127 and adjust all
+% Instead, define a multiplier 12.8/(10.0*2.54) = 64/127 and adjust all
 % respective lengths.
 
 
@@ -84,13 +84,29 @@
 % ----------------------------------------------------------------------------
 % *** HEADLINE <<<
 % ----------------------------------------------------------------------------
-\ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }{
- % \defbeamertemplate*{headline}{ua theme}{}%
+\ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }{%
+  \defbeamertemplate*{headline}{ua theme}%
+  {
+    % page number
+    \ifbeamer@framenumber%
+      \ifnum\c@framenumber=1\else
+       \pgftext[right,top,at=\pgfpoint{\paperwidth-\margin}{-0.04\paperheight}]{%
+          \usebeamerfont{frame number in head}%
+          \usebeamercolor[fg]{frame number in head}%
+          \insertframenumber{}%
+          \ifbeamer@totalframenumber%
+            /\inserttotalframenumber%
+          \fi
+        }%
+      \fi
+    \fi%
+  }%
 }{
   \newlength{\logotopmargin}%
   \setlength{\logotopmargin}{0.704cm}%  0.55in* 64/127 *2.54cm/in
   \defbeamertemplate*{headline}{ua theme}%
   {%
+    % TODO Don't \vskip if the title is too long!
     \vskip\logotopmargin%
     \hskip\margin%
     \ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
@@ -189,15 +205,6 @@
   {%
     \pgftext[left,bottom,at=\uTextColorPosDark]{\pgfuseimage{uTextColor}}%
     \pgftext[right,bottom,at=\posUlogoFoot]{\pgfuseimage{ULogo}}%
-    \ifbeamer@framenumber%
-      \ifnum\c@framenumber=1\else
-        \pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
-          \usebeamerfont{frame number in foot}%
-          \usebeamercolor[fg]{frame number in foot}\insertframenumber{}/\inserttotalframenumber%
-        }%
-      \fi%
-    \fi%
-
   }
   % *** ELSE *** light footline
   {%
@@ -214,7 +221,10 @@
       \ifnum\c@framenumber=1\else
         \pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
           \usebeamerfont{frame number in foot}%
-          \usebeamercolor[fg]{frame number in foot}\insertframenumber{}/\inserttotalframenumber%
+          \usebeamercolor[fg]{frame number in foot}\insertframenumber{}%
+          \ifbeamer@totalframenumber%
+            /\inserttotalframenumber%
+          \fi
         }%
       \fi
     \fi%
