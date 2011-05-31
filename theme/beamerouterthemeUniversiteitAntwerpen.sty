@@ -86,13 +86,14 @@
 % ----------------------------------------------------------------------------
 \ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }{%
   \defbeamertemplate*{headline}{ua theme}%
-  {% TODO Fix frame numbers for dark titles.
+  {
     % page number
     \ifbeamer@framenumber%
       \ifnum\c@framenumber=1\else
-        \pgftext[left,top,at=\pgfpoint{0.98\paperwidth}{0.98\paperheight}]{%
-          \usebeamerfont{frame number in foot}%
-          \usebeamercolor[fg]{frame number in foot}%
+       
+\pgftext[right,top,at=\pgfpoint{\paperwidth-\margin}{-0.04\paperheight}]{%
+          \usebeamerfont{frame number in head}%
+          \usebeamercolor[fg]{frame number in head}%
           \insertframenumber{}%
           \ifbeamer@totalframenumber%
             /\inserttotalframenumber%
@@ -107,7 +108,7 @@
   \defbeamertemplate*{headline}{ua theme}%
   {%
     % TODO Don't \vskip if the title is too long!
-    \vskip\logotopmargin
+    \vskip\logotopmargin%
     \hskip\margin%
     \ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
     {%
