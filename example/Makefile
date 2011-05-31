@@ -2,8 +2,7 @@
 
 # ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
-LATEXMK:=latexmk
-LATEXMK_OPTIONS:=-pdf
+LATEX:=lualatex
 
 # ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
@@ -15,13 +14,17 @@ TARGET:=uaBeamerExample
 default: main
 
 main:
-	@$(LATEXMK) $(LATEXMK_OPTIONS) $(TARGET)
+	@$(LATEX) $(TARGET)
 
 .PHONY: clean
 
 clean:
-	$(LATEXMK) -C
 	@rm -f $(TARGET)-blx.bib \
+	       $(TARGET).aux \
+	       $(TARGET).log \
+	       $(TARGET).out \
+	       $(TARGET).pdf \
+	       $(TARGET).toc \
 	       $(TARGET).snm \
 	       $(TARGET).nav \
 	       $(TARGET).bbl \

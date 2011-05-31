@@ -10,7 +10,7 @@
 % ... Hang on! As suggested in the manual, don't mess around with beamer's
 % assumed page dimensions (128mm x 96mm). Fonts, for example, do no get 
 % automatically scaled and will look tiny if the above is executed.
-% Instead, define a multiplicator 12.8/(10.0*2.54) = 64/127 and adjust all
+% Instead, define a multiplier 12.8/(10.0*2.54) = 64/127 and adjust all
 % respective lengths.
 
 
@@ -84,14 +84,30 @@
 % ----------------------------------------------------------------------------
 % *** HEADLINE <<<
 % ----------------------------------------------------------------------------
-\ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }{
- % \defbeamertemplate*{headline}{ua theme}{}%
+\ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }{%
+  \defbeamertemplate*{headline}{ua theme}%
+  {% TODO Fix frame numbers for dark titles.
+    % page number
+    \ifbeamer@framenumber%
+      \ifnum\c@framenumber=1\else
+        \pgftext[left,top,at=\pgfpoint{0.98\paperwidth}{0.98\paperheight}]{%
+          \usebeamerfont{frame number in foot}%
+          \usebeamercolor[fg]{frame number in foot}%
+          \insertframenumber{}%
+          \ifbeamer@totalframenumber%
+            /\inserttotalframenumber%
+          \fi
+        }%
+      \fi
+    \fi%
+  }%
 }{
   \newlength{\logotopmargin}%
   \setlength{\logotopmargin}{0.704cm}%  0.55in* 64/127 *2.54cm/in
   \defbeamertemplate*{headline}{ua theme}%
   {%
-    \vskip\logotopmargin%
+    % TODO Don't \vskip if the title is too long!
+    \vskip\logotopmargin
     \hskip\margin%
     \ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
     {%
