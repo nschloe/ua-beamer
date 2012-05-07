@@ -8,6 +8,10 @@ oneside
 \usepackage{lmodern}
 \usepackage{microtype}
 
+% For the Auto 1 example at the end.
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX, Scale=MatchLowercase}
+
 \usepackage{listings}  % include highlighted source code
 \lstset{% general command to set parameter(s)
 basicstyle=\ttfamily, % print whole listing small
@@ -44,11 +48,12 @@ language=[LaTeX]TeX
 % \usepackage[numbers]{natbib}
 % \bibliographystyle{plainnat}
 \usepackage[%
-bibtex8=true,
+%bibtex8=true,
 hyperref=auto
 ]{biblatex}
 \bibliography{bibtex/beamerstyleUa}
 
+\newcommand{\changefont}[3]{\fontfamily{#1}\fontseries{#2}\fontshape{#3}\selectfont}
 
 \usepackage[
 bookmarks,
@@ -61,15 +66,12 @@ pdfauthor={Nico Schloemer}
 ]{hyperref}
 
 
-\newcommand{\changefont}[3]{\fontfamily{#1}\fontseries{#2}\fontshape{#3}\selectfont}
-
-
 \newlength{\figurewidth}
 \newlength{\figureheight}
 
 % =========================================================================
 \title{A \texttt{beamer} presentation class theme for the Universiteit Antwerpen}
-\author{Nico~Schl\"omer\thanks{e-mail: \href{mailto:nico.schloemer@ua.ac.be}{\nolinkurl{nico.schloemer@ua.ac.be}}. Comments and suggestions always welcome.}}
+\author{Nico~Schl\"omer\thanks{e-mail: \href{mailto:nico.schloemer@gmail.com}{\nolinkurl{nico.schloemer@gmail.com}}. Comments and suggestions always welcome.}}
 \date{Version 0.2, \today}
 % =========================================================================
 

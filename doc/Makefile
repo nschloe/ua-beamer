@@ -2,8 +2,8 @@
 
 # ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
-LATEXMK:=latexmk
-LATEXMK_OPTIONS:=-pdf
+LATEX:=lualatex
+LATEX_OPTIONS:=
 
 # ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
@@ -15,16 +15,19 @@ TARGET:=beamerstyleUaDocumentation
 default: main
 
 main:
-	@$(LATEXMK) $(LATEXMK_OPTIONS) $(TARGET)
+	@$(LATEX) $(LATEX_OPTIONS) $(TARGET)
 
 .PHONY: clean
 
 clean:
-	$(LATEXMK) -C
 	@rm -f $(TARGET)-blx.bib \
-	       $(TARGET).snm \
-	       $(TARGET).nav \
+	       $(TARGET).aux \
 	       $(TARGET).bbl \
+	       $(TARGET).log \
+	       $(TARGET).nav \
+	       $(TARGET).out \
+	       $(TARGET).pdf \
+	       $(TARGET).snm \
 	       $(TARGET).thm \
 	       $(TARGET).run.xml \
 	       missfont.log \

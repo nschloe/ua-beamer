@@ -2,9 +2,7 @@
 
 To stick entirely to the corporate design of the Universiteit Antwerpen, one is bound to use the official font series \enquote{Auto} of Underware \cite{Underware::ATI}. As stated on the UA website, \textquote[KAN::T][.]{Een weloverwogen en consequente gebruik van typografie is de ruggengraat van een huisstijl.} (A deliberate and consistent use of typography is the backbone of a corporate design.). 
 
-Unfortunately, these fonts are not freely available, not even for university members. In order to make use of the most basic fonts, it would be enough to dispose of the \enquote{Auto~1 office package}, available for \EUR{200} per personal license. The files can be purchased either in TrueType OpenType format (\lstinline!.ttf!) or PostScript Type 1 format (\lstinline!.pfm!). While the PostScript format is native to \LaTeX{}, it TrueType-fonts can also be used natively in \LaTeX{} with \lstinline!pdflatex!; installation instructions are plenty (e.g., \cite{Rakityansky::TTF}).
-
-
+Unfortunately, these fonts are not freely available, not even for university members. In order to make use of the most basic fonts, it would be enough to buy \enquote{Auto~1 office package}, available for \EUR{200} per personal license. The files can be purchased either in TrueType OpenType format (\lstinline!.ttf!) or PostScript Type 1 format (\lstinline!.pfm!). While the PostScript format is native to \LaTeX{} for a long time, it TrueType-fonts can also be used natively in \LaTeX{} with \lstinline!lualatex!; see the example file for how to use it.
 
 \begin{table}
 \centering
@@ -12,41 +10,39 @@ Unfortunately, these fonts are not freely available, not even for university mem
 \newcommand\ligatures{ff fl fi ffi ij To AV \'e \`a \"a \"o \"u \"{i} \oe{} \ae{} \ss{} - -- --- ?`? \% \& @}
 \begin{tabular}{lll}\toprule
 weight  & shape  & sample\\\midrule
-light   & normal            & {\changefont{Auto1-LF}{l}{n}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{l}{n}\ligatures}\\
-        & italic            & {\changefont{Auto1-LF}{l}{it}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{l}{it}\ligatures}\\
-        & small caps        & {\changefont{Auto1-LF}{l}{sc}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{l}{sc}\ligatures}\\
-        & italic small caps & {\changefont{Auto1-LF}{l}{itsc}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{l}{itsc}\ligatures}\\\midrule
-regular & normal            & {\changefont{Auto1-LF}{m}{n}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{m}{n}\ligatures}\\
-        & italic            & {\changefont{Auto1-LF}{m}{it}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{m}{it}\ligatures}\\
-        & small caps        & {\changefont{Auto1-LF}{m}{sc}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{m}{sc}\ligatures}\\
-        & italic small caps & {\changefont{Auto1-LF}{m}{itsc}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{m}{itsc}\ligatures}\\\midrule
-bold    & normal            & {\changefont{Auto1-LF}{bx}{n}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{bx}{n}\ligatures}\\
-        & italic            & {\changefont{Auto1-LF}{bx}{it}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{bx}{it}\ligatures}\\
-        & small caps        & {\changefont{Auto1-LF}{bx}{sc}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{bx}{sc}\ligatures}\\
-        & italic small caps & {\changefont{Auto1-LF}{bx}{itsc}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{bx}{itsc}\ligatures}\\\midrule
-black   & normal            & {\changefont{Auto1-LF}{c}{n}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{c}{n}\ligatures}\\
-        & italic            & {\changefont{Auto1-LF}{c}{it}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{c}{it}\ligatures}\\
-        & italic            & {\changefont{Auto1-LF}{c}{itlf}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{c}{itlf}\ligatures}\\
-        & small caps        & {\changefont{Auto1-LF}{c}{sc}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{c}{sc}\ligatures}\\
-        & italic small caps & {\changefont{Auto1-LF}{c}{itsc}\quickfox}\\
-        &                   & {\changefont{Auto1-LF}{c}{itsc}\ligatures}\\\bottomrule
+light   & normal            & {\fontspec{auto1-light-lf}\quickfox}\\
+        &                   & {\fontspec{auto1-light-lf}\ligatures}\\
+        & italic            & {\fontspec{auto1-light-italic-lf}\quickfox}\\
+        &                   & {\fontspec{auto1-light-italic-lf}\ligatures}\\
+        & small caps        & {\fontspec{auto1-light-smcp}\quickfox}\\
+        &                   & {\fontspec{auto1-light-smcp}\ligatures}\\
+        & italic small caps & {\fontspec{auto1-light-italicsmcp}\quickfox}\\
+        &                   & {\fontspec{auto1-light-italicsmcp}\ligatures}\\\midrule
+regular & normal            & {\fontspec{auto1-lf}\quickfox}\\
+        &                   & {\fontspec{auto1-lf}\ligatures}\\
+        & italic            & {\fontspec{auto1-italic-lf}\quickfox}\\
+        &                   & {\fontspec{auto1-italic-lf}\ligatures}\\
+        & small caps        & {\fontspec{auto1-smcp}\quickfox}\\
+        &                   & {\fontspec{auto1-smcp}\ligatures}\\
+        & italic small caps & {\fontspec{auto1-italicsmcp}\quickfox}\\
+        &                   & {\fontspec{auto1-italicsmcp}\ligatures}\\\midrule
+bold    & normal            & {\fontspec{auto1-bold-lf}\quickfox}\\
+        &                   & {\fontspec{auto1-bold-lf}\ligatures}\\
+        & italic            & {\fontspec{auto1-bold-italic-lf}\quickfox}\\
+        &                   & {\fontspec{auto1-bold-italic-lf}\ligatures}\\
+        & small caps        & {\fontspec{auto1-bold-smcp}\quickfox}\\
+        &                   & {\fontspec{auto1-bold-smcp}\ligatures}\\
+        & italic small caps & {\fontspec{auto1-bold-italicsmcp}\quickfox}\\
+        &                   & {\fontspec{auto1-bold-italicsmcp}\ligatures}\\\midrule
+black   & normal            & {\fontspec{auto1-black-lf}\quickfox}\\
+        &                   & {\fontspec{auto1-black-lf}\ligatures}\\
+        & italic            & {\fontspec{auto1-black-italic-lf}\quickfox}\\
+        &                   & {\fontspec{auto1-black-italic-lf}\ligatures}\\
+        & small caps        & {\fontspec{auto1-black-smcp}\quickfox}\\
+        &                   & {\fontspec{auto1-black-smcp}\ligatures}\\
+        & italic small caps & {\fontspec{auto1-black-italicsmcp}\quickfox}\\
+        &                   & {\fontspec{auto1-black-italicsmcp}\ligatures}\\\bottomrule
 \end{tabular}
 
-\caption{Samples of the font Auto 1 of Underware. All regular and italic versions are available with lining and text figures.}
+\caption{Samples of the font Auto 1 of Underware. All regular and italic versions are available with lining and old-style figures.}
 \end{table}
