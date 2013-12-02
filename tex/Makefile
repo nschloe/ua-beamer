@@ -3,7 +3,7 @@
 # ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
 ECHOCMD:=/bin/echo -e
-PDFLATEX:=pdflatex
+LATEX:=lualatex
 
 # ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
@@ -15,10 +15,10 @@ TARGET:=ua-beamer
 default: doc
 
 doc:
-	@$(PDFLATEX) $(TARGET).dtx
+	@$(LATEX) $(TARGET).dtx
 
 sty:
-	@$(PDFLATEX) $(TARGET).ins
+	@$(LATEX) $(TARGET).ins
 
 .PHONY: clean
 

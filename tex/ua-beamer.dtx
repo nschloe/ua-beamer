@@ -1,14 +1,14 @@
 % \iffalse meta-comment
-% 
+%
 % Copyright (C) 2009 by Nico Schlömer
-% 
+%
 % This file may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either
 % version 1.2 of this license or (at your option) any later
 % version. The latest version of this license is in:
-% 
+%
 %    http://www.latex-project.org/lppl.txt
-% 
+%
 % and version 1.2 or later is part of all distributions of
 % LaTeX version 1999/12/01 or later.
 %
@@ -20,7 +20,27 @@
 %<*driver>
 \documentclass{ltxdoc}
 % \usepackage{lmodern}
-\usepackage{MinionPro}
+\usepackage{fontspec,microtype}
+\defaultfontfeatures{Ligatures=TeX, Scale=MatchLowercase}
+\setmainfont[
+% When adapting the LetterSpace for small caps, some parts of the document
+% look distorted (e.g., the title page).
+%SmallCapsFeatures={LetterSpace=6},
+Numbers={Proportional,OldStyle}
+]{Minion Pro}
+\setsansfont[
+%LetterSpace=3,
+Numbers={Proportional,OldStyle}
+]{Myriad Pro}
+\SetProtrusion
+   [ name     = min-eu2 ]
+   { encoding = {EU2},
+     family   = MinionPro  }
+   {
+     {,} = {  ,500},
+      -  = {  ,500}
+   }
+
 \usepackage[T1]{fontenc}
 \usepackage{lipsum}
 \usepackage{microtype}
@@ -52,7 +72,6 @@
 }{}
 
 \usepackage[%
-bibtex8=true,
 hyperref=auto
 ]{biblatex}
 \bibliography{bibtex/beamerstyleUa}
@@ -107,17 +126,17 @@ hyperref=auto
 % \definecolor{col12}{RGB}{  0, 47,128}
 % \definecolor{col13}{RGB}{ 17,  0,128}
 % \definecolor{col14}{RGB}{ 81,  0,128}
-% 
+%
 % \definecolor{col21}{RGB}{  0,128, 81}
 % \definecolor{col22}{RGB}{  0,164,189}
 % \definecolor{col23}{RGB}{  0,217,250}
 % \definecolor{col24}{RGB}{128,  0,111}
-% 
+%
 % \definecolor{col31}{RGB}{  0,128, 17}
 % \definecolor{col32}{RGB}{250, 33,  0}
 % \definecolor{col33}{RGB}{189, 25,  0}
 % \definecolor{col34}{RGB}{128,  0, 47} % approx. uared
-% 
+%
 % \definecolor{col41}{RGB}{ 47,128,  0}
 % \definecolor{col42}{RGB}{111,128,  0}
 % \definecolor{col43}{RGB}{128, 81,  0}
@@ -205,42 +224,42 @@ hyperref=auto
 %
 % \begin{abstract}
 % This is a theme for the \LaTeX{} \pkg{beamer} class for presentations. It has been designed to  match the official \acro{UA} templates for \powerpoint{} while doing away with some of the shortcomings of it within the \pkg{beamer} framework. If you would like to give a scientific presentation with all the benefits you get from using \LaTeX{}, this theme is for you.\footnote{Note that there exists another \pkg{beamer} theme for the Universiteit Antwerpen designed by \textsc{Kris Ven} \cite{Ven::BTU}, which has many more options than this package. In contrast to this theme, it is not designed with compliance to the official themes in mind.}
-% 
+%
 % \end{abstract}
 % \tableofcontents
 %
 % \section{Installation}
-% 
+%
 % \subsection{Requirements}
 % The theme is an addendum for the \LaTeX{} \pkg{beamer} class, hence it is assumed that you have a running \LaTeX{} installation together with
 % the \pkg{beamer} package \cite{Tantau:2008:LBC} and its dependencies. If not already the case, it will also certainly be a good idea to make
 % yourself familiar with the \pkg{beamer} class. The excellent manual \cite{Tantau:2007:UGB} is will serve you well.
 % %Basically, it is straightforward to adapt your \pkg{beamer} presentation to the official \acro{UA} design. After placing files somewhere into the
-% \TeX{} file tree (see above), the only this necessary 
-% 
+% \TeX{} file tree (see above), the only this necessary
+%
 % \subsection{Getting the package}
-% 
+%
 % The package is distributed on the maintainer's website \cite{Schloemer:2009:website}. You can get the latest releases there, as well as
 % additional information about the package. If you would like to stay on the bleeding edge of development, you can have read access to the
 % Subversion repository by typing
 % \begin{quote}
 % |$ svn co svn://macos.cmi.ua.ac.be:/home/wins/toegw/nschloe/svnrepos/ua-beamer|
 % \end{quote}
-% 
-% 
+%
+%
 % \subsection{First run}{sec:firstrun}
 % Once you have the files, all that is required for the theme to work is putting the files into a directory where \LaTeX{} can find them. If you
 % would like to install it for one user only, this would typically be |~/texmf/| (on Unix). For all other options please refer to the
 % documentation of your \LaTeX{} package manager.
-% 
+%
 % You can check if \LaTeX{} finds the files in its directories by, for example, looking for the file |beamerfontthemeUniversiteitAntwerpen.sty|,
 % \begin{quote}
 % |$ kpsewhich beamerfontthemeUniversiteitAntwerpen.sty|
 % \end{quote}
 % If everything seems okay, you can check whether you can actually produce a presentation with the \acro{UA} theme by either creating a minimal test
-% file (see section~\ref{sec:firstrun}) or by compiling the \LaTeX-document provided in the |example/| folder of this package. 
-% 
-% 
+% file (see section~\ref{sec:firstrun}) or by compiling the \LaTeX-document provided in the |example/| folder of this package.
+%
+%
 % \begin{figure}
 % \centering
 % \setlength{\figurewidth}{5cm}
@@ -249,19 +268,19 @@ hyperref=auto
 % \qquad
 % \frame{\includegraphics[width=\figurewidth]{figures/light-page2}}%
 % }
-% 
+%
 % \subfloat[][The first two pages with dark theming (option \textsf{dark}).]{%
 % \frame{\includegraphics[width=\figurewidth]{figures/dark-page1}}%
 % \qquad
 % \frame{\includegraphics[width=\figurewidth]{figures/dark-page2}}%
 % }
-% 
+%
 % \caption{The first two pages of \acro{PDF} output of the example file in example/, with light and dark theming. The theme is loaded with the
 % option \textsf{framenumber} and the \pkg{beamer} package itself with option{compress}. Note that it is also possible the combine the dark title page
 % with light content pages (option option{darktitle}, see below).}
 % \label{fig:example1}
 % \end{figure}
-% 
+%
 % \begin{note}
 % You might need to install more \LaTeX{} packages when running the provided example file (e.g., the \pkg{lipsum} package).
 % \end{note}
@@ -286,7 +305,7 @@ hyperref=auto
 % Just like the Universiteit Antwerpen itself provides two different flavors of \powerpoint{} presentations, one
 % with a light background and one with a darker, this \pkg{beamer} themes inherits options for both (see figure \ref{fig:example1}).
 % The default setting is marked with an asterisk*.
-% 
+%
 % \begin{options}[\option{proportional}, \option{prop}]
 % \item[\option*{light}]      use light theming
 % \item[\option{dark}]        use dark (blue) theming
@@ -297,55 +316,55 @@ hyperref=auto
 % \begin{options}[\option{proportional}, \option{prop}]
 % \item[\option{framenumber}]    With the light scheme, the \option{framenumber} option makes sure that the number of the current frame as well as the total number of frames is displayed in the right lower corner of each frame. Does not do anything with the dark variant (see option \option{dark})
 % \end{options}
-% 
+%
 % \begin{note}
 % The \pkg{beamer} option \option{compress} is respected in the sense that, if provided, header and footer will take less space such that
 % there is more room for actual frame content.
 % \end{note}
 %
 % \section{Colors}\label{sec:colors}
-% 
+%
 % \begin{note}
 % If you don't care about the technical details, you can skip this and directly go to subsection \ref{subsection:usingthecolors}.
 % \end{note}
 %
 % \subsection{Background on the official colors}
-% 
+%
 % The two official colors of the \acro{UA}, a blue and a red tone, are originally given in \acro{PMS} format, a \emph{proprietary} format issued
 % by the Pantone Inc.\ corporation. One particular feature of the \acro{PMS} color format is that it is, as opposed to \acro{RGB} or \acro{CMYK},
 % \emph{device independent}. This means that the definition of the color does not consist of instructions such as \enquote{put 37\% red, 12\%
 % green, and 45\% blue and mix it all together}, but really is a concise description of what the final result, be it printed or displayed,
 % physically looks like on the medium under determined ambient light conditions.
-% 
+%
 % The \acro{PMS} format is richer than \acro{RGB} in the sense that it can embrace fluorescence effects, gold or silver shine, special coatings
 % (matte and brilliant), in general everything that has to do with the actual appearance of the color on the medium. It comes thus as no surprise
 % that there is no (exact) mapping between the \acro{PMS} and \acro{RGB} color spaces; more specifically: the mapping -- if it exists -- is
 % device-dependent.
-% 
+%
 % The \emph{only} way to get a perfect \acro{PMS} 1955 red, for example, is to have a the plot file ready with the (proprietary) \acro{PMS} color
 % information in it, and have it printed on a \acro{PMS}-ready printer which needs to be filled the special \acro{PMS} 1955 ink beforehand. This
 % process is eponymous for colors which are not composed of different types of (yellow, blue, red) inks: they are called \emph{single-spot
 % colors}, and most Pantone\textsuperscript{\textregistered} colors are of such kind.
-% 
-% 
+%
+%
 % \subsection{Conversion to \acro{RGB}/\acro{CMYK}}
-% 
+%
 % When the computer screen or any other non-\acro{PMS}-ready medium is the primary output source, having such rigorous rules may be rather
 % obstructive. To overcome such restrictions, many vendors of graphical software try to translate \acro{PMS} into \acro{RGB}/\acro{CMYK} by
 % making use of special monitor color calibration data (e.g., \acro{ICC} color profiles). Unfortunately, if files containing
 % \acro{PMS} color information are displayed (printed) with programs (printers) which do not support \acro{PMS} mechanisms (which is most often
 % the case in non-professional environments), the color output will look disturbed. On top of that, and surprisingly for the novice, the output
 % will look disturbed in different ways on different screens (printers) because of the inherent device-dependence of \acro{PMS}.
-% 
+%
 % %To overcome the undesired side-effects of working with the official \acro{UA} corporate design in a non-\acro{PMS} environment (like most beamers and
 % computer screens should provide),
 % That is why this theme aims to use non-\acro{PMS} versions of the \acro{UA}'s official colors, including modified versions of the logos.
-% 
+%
 % \begin{table}
 % \centering
 % \newlength{\boxsize}
 % \setlength{\boxsize}{2cm}
-% 
+%
 % \begin{tabular}{cccc}
 % \definecolor{uablue11}{RGB}{  0, 61,100}
 % \colorbox{uablue11}{\rule{0mm}{\boxsize}\rule{\boxsize}{0mm}}
@@ -370,32 +389,32 @@ hyperref=auto
 % \definecolor{uared11}{cmyk}{0,1,0.6,0.37}
 % \colorbox{uared11}{\rule{0mm}{\boxsize}\rule{\boxsize}{0mm}}
 % \end{tabular}
-% 
+%
 % \caption{\acro{PMS} 302 and \acro{PMS} 1955 translated to \acro{CMYK}/\acro{RGB} in different ways. Left to right: \acro{UA} website \cite{KAN::}
 % \acro{RGB}, \acro{UA} website \cite{KAN::} \acro{CMYK}, conversion chart \cite{::TDC} \acro{RGB}, conversion chart \cite{::TDC} \acro{CMYK}. To
 % determine which version is closest to the actual colors \acro{PMS} 1955 and \acro{PMS} 302 on your monitor/printer/beamer, you would need a
 % physical color sample (such as provided on the Pantone\textsuperscript{\textregistered} charts) to compare.}
 % \label{table:reds-blues}
 % \end{table}
-% 
+%
 % Now, as explained above there is no device-independent conversion between the original \acro{PMS} directives and the \acro{CMYK} color space;
 % several tables exist which are valid for different work environments. On the official sites of the \acro{UA} \cite{KAN::}, you'll find particular
 % \acro{RGB} and \acro{CMYK} values, other resources, e.g., \cite{::TDC}, provide other numbers (see table \ref{table:reds-blues}).
-% 
+%
 % For the sake of consistency between \acro{RGB} and \acro{CMYK} values, the \pkg{beamer} theme uses the \acro{CMYK} values for \acro{PMS} 302
 % and \acro{PMS} 1955 provided on \cite{::TDC} for reference (see table \ref{table:reds-blues}, last column, and table \ref{table:allcolors}).
-% 
+%
 % \subsection{Using the colors}\label{subsection:usingthecolors}
-% 
-% 
+%
+%
 % Getting a consistent look-and-feel throughout your presentations requires sticking to a particular style scheme, most of which is being
 % implemented in the \pkg{beamer} style file already. One particular aspect, though, can only be controlled by the user, and that is the colors
 % that are used in the running text, tables, and figures.
-% 
+%
 % Although essentially consistent of only two colors, within \pkg{beamer} referred to as |uablue| and |uared|, provide more
 % diversity than one might expect and should be  \emph{exclusively} used  in all the slides. The user should be aware that this directive
 % includes \emph{tables, figures, and graphics of most kinds}. For an example of usage see figure \ref{fig:coloredgraphs}.
-% 
+%
 % \begin{figure}
 % \setlength{\figurewidth}{10cm}
 % \setlength{\figureheight}{5cm}
@@ -404,13 +423,13 @@ hyperref=auto
 % \caption{Example usage of the official colors within a set of graphs, using also the exception color.}
 % \label{fig:coloredgraphs}
 % \end{figure}
-% 
+%
 % If you need to emphasize a particular aspect in your slides (graphs, tables), you can (within \pkg{beamer}) use the |\alert{}| macro (e.g.,
 % |\alert{This is alerted text.}|). For the situation where something needs to stick out in a pie chart, for example, where the ordinary colors
 % (\acro{UA} blue and red) have been used up already, a third color has been added (see table \ref{table:allcolors}). It is to be used scarcely
 % and strictly for highlighting purposes (see, for example, figure \ref{fig:coloredgraphs}).
-% 
-% 
+%
+%
 % \begin{table}
 % \setlength{\figurewidth}{12mm}
 % \centering
@@ -423,7 +442,7 @@ hyperref=auto
 % \acro{CMYK} & (25, 8, 0, 16)  & (10, 3, 0, 6)   & (5, 2, 0, 3)\\
 % \acro{RGB}  & (166, 209, 222) & (218, 235, 242) & (235, 245, 247)\\
 % \pkg{beamer} name & |uablue25| & |uablue10| & |uablue5|\\\midrule
-% 
+%
 % Color sample & \colorsquare{\figurewidth}{uared100} & \colorsquare{\figurewidth}{uared75} & \colorsquare{\figurewidth}{uared50}\\
 % \acro{CMYK} & (0, 100, 54, 46) & (0, 75, 41, 35) & (0, 50, 27, 23)\\
 % \acro{RGB}  & (161, 0, 64)     & (184, 46, 101)  & (207, 103, 145)\\
@@ -432,7 +451,7 @@ hyperref=auto
 % \acro{CMYK} & (0, 25, 14, 12)  & (0, 10, 5, 5)   & (0, 5, 3, 2)\\
 % \acro{RGB}  & (232, 174, 197) & (245, 220, 230) & (250, 237, 242)\\
 % \pkg{beamer} name & |uared25| & |uared10| & |uared5|\\\midrule
-% 
+%
 % Color sample & \colorsquare{\figurewidth}{vividbrown} & \colorsquare{\figurewidth}{vividbrown75} & \colorsquare{\figurewidth}{vividbrown50}\\
 % \acro{CMYK} & (0, 28, 67, 16) & (0, 20, 48, 12) & (0, 13, 31, 8)\\
 % \acro{RGB}  & (215, 154, 70) & (225, 179, 116)  & (235, 205, 163)\\
@@ -442,20 +461,20 @@ hyperref=auto
 % \acro{RGB}  & (245, 230, 209)  & (251, 245, 237) & (253, 250, 246)\\
 % \pkg{beamer} name & |vividbrown25| & |vividbrown10| & |vividbrown5|\\\bottomrule
 % \end{tabulary}
-% 
+%
 % \caption{Overview over the two main colors used in theme as well as the third color for exceptions and highlighting.}
 % \label{table:allcolors}
 % \end{table}
 %
 %
 % \section{Fonts}
-% 
+%
 % As stated on the \acro{UA} website,
 % \foreignblockquote{dutch}[\cite{KAN::T}][]{Een weloverwogen en consequente gebruik van typografie is de ruggengraat van een huisstijl.}
 % (A deliberate and consistent use of typography is the backbone of a corporate design.).
 %
 % This is certainly true, and it is only by the font that gives a written text its unique character. To embrace this important aspect of the
-% corporate design of the Universiteit Antwerpen, it is thus required to deploy the  the official font 
+% corporate design of the Universiteit Antwerpen, it is thus required to deploy the  the official font
 % series \enquote{Auto} of Underware \cite{Underware::ATI} in the \acro{UA} documents. A small sample of the Auto 1\texttrademark{}
 % is the following.
 % \begin{quote}
@@ -464,7 +483,7 @@ hyperref=auto
 % Unfortunately, these fonts are \emph{not} freely available, particularly not even for university members.
 % If you still happen to own the font (e.g., in \acro{TTF} format), then you might want to look at the \LaTeX{} support package \cite{Schloemer:2009:A1F} for
 % usage within the \pkg{beamer} presentation (and all other \LaTeX{} documents of course).
-% 
+%
 %
 % \section{Version history}
 %
@@ -968,7 +987,7 @@ hyperref=auto
 %    \begin{macrocode}
 \defbeamertemplate*{footline}{ua theme dark}
 {%
-  \ifthenelse{ \boolean{beamer@dark} 
+  \ifthenelse{ \boolean{beamer@dark}
                \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
 %    \end{macrocode}
 % For the dark theme, pull in the \acro{UA} text logo and the `U' logo.
@@ -1029,7 +1048,7 @@ hyperref=auto
 %    \begin{macrocode}
 \defbeamertemplate*{background canvas}{ua theme}
 {%
-  \ifthenelse{ \boolean{beamer@dark} 
+  \ifthenelse{ \boolean{beamer@dark}
                \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
   {%
     \ifnum\c@framenumber=1%
