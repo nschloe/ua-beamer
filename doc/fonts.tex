@@ -1,13 +1,25 @@
 \section{Fonts}
 
-To stick entirely to the corporate design of the Universiteit Antwerpen, one is bound to use the official font series \enquote{Auto} of Underware \cite{Underware::ATI}. As stated on the UA website, \textquote[KAN::T][.]{Een weloverwogen en consequente gebruik van typografie is de ruggengraat van een huisstijl.} (A deliberate and consistent use of typography is the backbone of a corporate design.). 
+To stick entirely to the corporate design of the Universiteit Antwerpen, one is
+bound to use the official font series \enquote{Auto} of Underware
+\cite{Underware::ATI}. As stated on the UA website, \textquote[KAN::T][.]{Een
+weloverwogen en consequente gebruik van typografie is de ruggengraat van een
+huisstijl.} (A deliberate and consistent use of typography is the backbone of a
+corporate design.).
 
-Unfortunately, these fonts are not freely available, not even for university members. In order to make use of the most basic fonts, it would be enough to buy \enquote{Auto~1 office package}, available for \EUR{200} per personal license. The files can be purchased either in TrueType OpenType format (\lstinline!.ttf!) or PostScript Type 1 format (\lstinline!.pfm!). While the PostScript format is native to \LaTeX{} for a long time, it TrueType-fonts can also be used natively in \LaTeX{} with \lstinline!lualatex!; see the example file for how to use it.
+Unfortunately, these fonts are not freely available, not even for university
+members. In order to make use of the most basic fonts, it would be enough to
+buy \enquote{Auto~1 office package}, available for \EUR{200} per personal
+license. The files can be purchased either in TrueType OpenType format
+(\lstinline!.ttf!) or PostScript Type 1 format (\lstinline!.pfm!). While the
+PostScript format is native to \LaTeX{} for a long time, it TrueType-fonts can
+also be used natively in \LaTeX{} with \lstinline!lualatex!; see the example
+file for how to use it.
 
 \begin{table}
 \centering
 \newcommand\quickfox{The quick brown fox jumps over the lazy dog. 0123456789}
-\newcommand\ligatures{ff fl fi ffi ij To AV \'e \`a \"a \"o \"u \"{i} \oe{} \ae{} \ss{} - -- --- ?`? \% \& @}
+\newcommand\ligatures{ff fl fi ffi ij To AV \'e \`a \"a \"o \"u \"{\i} \oe{} \ae{} \ss{} - -- --- ?`? \% \& @}
 \begin{tabular}{lll}\toprule
 weight  & shape  & sample\\\midrule
 light   & normal            & {\fontspec{auto1-light-lf}\quickfox}\\
@@ -44,5 +56,6 @@ black   & normal            & {\fontspec{auto1-black-lf}\quickfox}\\
         &                   & {\fontspec{auto1-black-italicsmcp}\ligatures}\\\bottomrule
 \end{tabular}
 
-\caption{Samples of the font Auto 1 of Underware. All regular and italic versions are available with lining and old-style figures.}
+\caption{Samples of the font Auto 1 of Underware. All regular and italic
+versions are available with lining and old-style figures.}
 \end{table}

@@ -4,6 +4,7 @@
 
 LATEX:=lualatex
 LATEX_OPTIONS:=
+BIBTEX:=biber
 
 # ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
@@ -17,6 +18,9 @@ default: main
 main:
 	@$(LATEX) $(LATEX_OPTIONS) $(TARGET)
 
+bib:
+	@$(BIBTEX) $(TARGET)
+
 .PHONY: clean
 
 clean:
@@ -29,6 +33,8 @@ clean:
 	       $(TARGET).pdf \
 	       $(TARGET).snm \
 	       $(TARGET).thm \
+	       $(TARGET).bcf \
+	       $(TARGET).blg \
 	       $(TARGET).run.xml \
 	       missfont.log \
 	       *~

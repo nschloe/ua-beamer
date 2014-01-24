@@ -3,22 +3,55 @@
 \subsection{Background on the official colors}
 
 \begin{note}
-If you don't care about the technical details, you can skip this and directly go to subsection \ref{subsection:usingthecolors}.
+If you don't care about the technical details, you can skip this and directly
+go to subsection~\ref{subsection:usingthecolors}.
 \end{note}
 
-The two official colors of the UA, a blue and a red tone, are originally given in PMS format, a \emph{proprietary} format issued by the Pantone Inc.\ corporation. One particular feature of the PMS color format is that it is, as opposed to RGB or CMYK, \emph{device independent}. This means that the definition of the color does not consist of instructions such as \enquote{put 37\% red, 12\% green, and 45\% blue and mix it all together}, but really is a concise description of what the final result, be it printed or displayed, physically looks like on the medium under determined ambient light conditions.
+The two official colors of the UA, a blue and a red tone, are originally given
+in PMS format, a \emph{proprietary} format issued by the Pantone Inc.\
+corporation. One particular feature of the PMS color format is that it is, as
+opposed to RGB or CMYK, \emph{device independent}. This means that the
+definition of the color does not consist of instructions such as \enquote{put
+  37\% red, 12\% green, and 45\% blue and mix it all together}, but really is a
+  concise description of what the final result, be it printed or displayed,
+  physically looks like on the medium under determined ambient light
+  conditions.
 
-The PMS format is richer than RGB in the sense that it can embrace fluorescence effects, gold or silver shine, special coatings (matte and brilliant), in general everything that has to do with the actual appearance of the color on the medium. It comes thus as no surprise that there is no (exact) mapping between the PMS and RGB color spaces; more specifically: the mapping -- if it exists -- is device-dependent.
+The PMS format is richer than RGB in the sense that it can embrace fluorescence
+effects, gold or silver shine, special coatings (matte and brilliant), in
+general everything that has to do with the actual appearance of the color on
+the medium. It comes thus as no surprise that there is no (exact) mapping
+between the PMS and RGB color spaces; more specifically: the mapping -- if it
+exists -- is device-dependent.
 
-The \emph{only} way to get a perfect PMS 1955 red, for example, is to have a the plot file ready with the (proprietary) PMS color information in it, and have it printed on a PMS-ready printer which needs to be filled the special PMS 1955 ink beforehand. This process is eponymous for colors which are not composed of different types of (yellow, blue, red) inks: they are called \emph{single-spot colors}, and most Pantone\textsuperscript{\textregistered} colors are of such kind.
+The \emph{only} way to get a perfect PMS 1955 red, for example, is to have a
+the plot file ready with the (proprietary) PMS color information in it, and
+have it printed on a PMS-ready printer which needs to be filled the special PMS
+1955 ink beforehand. This process is eponymous for colors which are not
+composed of different types of (yellow, blue, red) inks: they are called
+\emph{single-spot colors}, and most Pantone\textsuperscript{\textregistered}
+colors are of such kind.
 
 
 \subsection{Conversion to RGB/CMYK}
 
-When the computer screen or any other non-PMS-ready medium is the primary output source, having such rigorous rules may be rather obstructive. To overcome such restrictions, many vendors of graphical software try to translate PMS into RGB/CMYK by making use of special monitor color calibration data (e.g., the ICC color profiles, \lstinline!.icc!). Unfortunately, if files containing PMS color information are displayed (printed) with programs (printers) which do not support PMS mechanisms (which is most often the case in non-professional environments), the color output will look disturbed. On top of that, and surprisingly for the novice, the output will look disturbed in different ways on different screens (printers) because of the inherent device-dependence of PMS.
+When the computer screen or any other non-PMS-ready medium is the primary
+output source, having such rigorous rules may be rather obstructive. To
+overcome such restrictions, many vendors of graphical software try to translate
+PMS into RGB/CMYK by making use of special monitor color calibration data
+(e.g., the ICC color profiles, \lstinline!.icc!). Unfortunately, if files
+containing PMS color information are displayed (printed) with programs
+(printers) which do not support PMS mechanisms (which is most often the case in
+non-professional environments), the color output will look disturbed. On top of
+that, and surprisingly for the novice, the output will look disturbed in
+different ways on different screens (printers) because of the inherent
+device-dependence of PMS.
 
-%To overcome the undesired side-effects of working with the official UA corporate design in a non-PMS environment (like most beamers and computer screens should provide),
-That is why this theme aims to use non-PMS versions of the UA's official colors, including modified versions of the logos.
+%To overcome the undesired side-effects of working with the official UA
+%corporate design in a non-PMS environment (like most beamers and computer
+%screens should provide),
+That is why this theme aims to use non-PMS versions of the UA's official
+colors, including modified versions of the logos.
 
 \begin{table}
 \centering
@@ -50,31 +83,59 @@ That is why this theme aims to use non-PMS versions of the UA's official colors,
 \colorbox{uared11}{\rule{0mm}{\boxsize}\rule{\boxsize}{0mm}}
 \end{tabular}
 
-\caption{PMS 302 and PMS 1955 translated to CMYK/RGB in different ways. Left to right: UA website \cite{KAN::} RGB, UA website \cite{KAN::} CMYK, conversion chart \cite{::TDC} RGB, conversion chart \cite{::TDC} CMYK. To determine which version is closest to the actual colors PMS 1955 and PMS 302 on your monitor/printer/beamer, you would need a physical color sample (such as provided on the Pantone\textsuperscript{\textregistered} charts) to compare.}
+\caption{PMS 302 and PMS 1955 translated to CMYK/RGB in different ways. Left to
+right: UA website \cite{KAN::} RGB, UA website \cite{KAN::} CMYK, conversion
+chart~\cite{::TDC} RGB, conversion chart~\cite{::TDC} \@CMYK. To determine which
+version is closest to the actual colors PMS 1955 and PMS 302 on your
+monitor/printer/beamer, you would need a physical color sample (such as
+provided on the Pantone\textsuperscript{\textregistered} charts) to compare.}
 \label{table:reds-blues}
 \end{table}
 
-Now, as explained above there is no device-independent conversion between the original PMS directives and the CMYK color space; several tables exist which are valid for different work environments. On the official sites of the UA \cite{KAN::}, you'll find particular RGB and CMYK values, other resources, e.g., \cite{::TDC}, provide other numbers (see table \ref{table:reds-blues}).
+Now, as explained above there is no device-independent conversion between the
+original PMS directives and the CMYK color space; several tables exist which
+are valid for different work environments. On the official sites of the UA
+\cite{KAN::}, you'll find particular RGB and CMYK values, other resources,
+e.g., \cite{::TDC}, provide other numbers (see table~\ref{table:reds-blues}).
 
-For the sake of consistency between RGB and CMYK values, the \texttt{beamer} theme uses the CMYK values for PMS 302 and PMS 1955 provided on \cite{::TDC} for reference (see table \ref{table:reds-blues}, last column, and table \ref{table:allcolors}).
+For the sake of consistency between RGB and CMYK values, the \texttt{beamer}
+theme uses the CMYK values for PMS 302 and PMS 1955 provided on \cite{::TDC}
+for reference (see table~\ref{table:reds-blues}, last column, and
+table~\ref{table:allcolors}).
+
 
 \subsection{Using the colors}\label{subsection:usingthecolors}
 
+Getting a consistent look-and-feel throughout your presentations requires
+sticking to a particular style scheme, most of which is being implemented in
+the \texttt{beamer} style file already. One particular aspect, though, can only
+be controlled by the user, and that is the colors that are used in the running
+text, tables, and figures.
 
-Getting a consistent look-and-feel throughout your presentations requires sticking to a particular style scheme, most of which is being implemented in the \texttt{beamer} style file already. One particular aspect, though, can only be controlled by the user, and that is the colors that are used in the running text, tables, and figures.
-
-Although essentially consistent of only two colors, within \texttt{beamer} referred to as \lstinline!uablue! and \lstinline!uared!, provide more diversity than one might expect and should be  \emph{exclusively} used  in all the slides. The user should be aware that this directive includes \emph{tables, figures, and graphics of most kinds}. For an example of usage see figure \ref{fig:coloredgraphs}.
+Although essentially consistent of only two colors, within \texttt{beamer}
+referred to as \lstinline!uablue! and \lstinline!uared!, provide more diversity
+than one might expect and should be  \emph{exclusively} used  in all the
+slides. The user should be aware that this directive includes \emph{tables,
+figures, and graphics of most kinds}. For an example of usage see
+figure~\ref{fig:coloredgraphs}.
 
 \begin{figure}
 \setlength{\figurewidth}{10cm}
 \setlength{\figureheight}{5cm}
 \centering
 \input{figures/graphs.tikz}
-\caption{Example usage of the official colors within a set of graphs, using also the exception color.}
+\caption{Example usage of the official colors within a set of graphs, using
+also the exception color.}
 \label{fig:coloredgraphs}
 \end{figure}
 
-If you need to emphasize a particular aspect in your slides (graphs, tables), you can (within \texttt{beamer}) use the \lstinline!\alert{}! macro (e.g., \lstinline!\alert{This is alerted text.}!). For the situation where something needs to stick out in a pie chart, for example, where the ordinary colors (UA blue and red) have been used up already, a third color has been added (see table \ref{table:allcolors}). It is to be used scarcely and strictly for highlighting purposes (see, for example, figure \ref{fig:coloredgraphs}).
+If you need to emphasize a particular aspect in your slides (graphs, tables),
+you can (within \texttt{beamer}) use the \lstinline!\alert{}! macro (e.g.,
+\lstinline!\alert{This is alerted text.}!). For the situation where something
+needs to stick out in a pie chart, for example, where the ordinary colors (UA
+blue and red) have been used up already, a third color has been added (see
+table~\ref{table:allcolors}). It is to be used scarcely and strictly for
+highlighting purposes (see, for example, figure~\ref{fig:coloredgraphs}).
 
 
 \begin{table}
