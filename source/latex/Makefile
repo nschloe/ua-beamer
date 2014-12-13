@@ -39,6 +39,7 @@ clean:
 	       $(TARGET).brf \
 	       $(TARGET).glo \
 	       $(TARGET).idx \
+	       $(TARGET).bcf \
 	       $(TARGET)-blx.bib \
 	       *.sty \
 	       missfont.log  \
