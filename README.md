@@ -26,7 +26,7 @@ Using the theme is as simple as invoking beamer's `\usetheme`:
 ```latex
 \documentclass[compress]{beamer}
 
-\usetheme[light,framenumber,totalframenumber]{UniversiteitAntwerpen}
+\usetheme[light,darktitle,framenumber,totalframenumber]{UniversiteitAntwerpen}
 
 \usepackage{lipsum}
 
