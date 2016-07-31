@@ -8,7 +8,6 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get -y install texlive-latex-base texlive-latex-extra latex-beamer
 
-# manually install important TeX dependencies
 install:
   # beamer
   - export TEXMFLOCAL=/tmp/texmf/ && mkdir -p $TEXMFLOCAL/tex/latex/
@@ -16,6 +15,7 @@ install:
   - cp -ar * $TEXMFLOCAL/tex/latex/
   - texhash
 
-# run tests
+# run test
 script:
+  - cd doc/example/
   - make test
