@@ -1,0 +1,23 @@
+#sudo: false
+sudo: required
+dist: trusty
+
+language: generic
+
+virtualenv:
+  system_site_packages: true
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get -y install texlive-latex-base texlive-latex-extra
+
+# manually install important TeX dependencies
+install:
+  - export TEXMFLOCAL=/tmp/texmf/ && mkdir -p $TEXMFLOCAL
+  - wget http://mirrors.ctan.org/macros/latex/contrib/beamer.zip -O /tmp/beamer.zip
+  - unzip /tmp/beamer.zip -d $TEXMFLOCAL
+  - texhash
+
+# run tests
+script:
+  - make test
