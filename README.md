@@ -1,5 +1,7 @@
 # UA beamer theme
 
+[![Build Status](https://travis-ci.org/nschloe/ua-beamer.svg?branch=master)](https://travis-ci.org/nschloe/ua-beamer)
+
 This is a LaTeX beamer theme for the University of Antwerp. It
 is designed to match the official UA templates for Microsoft
 PowerPoint.
