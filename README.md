@@ -6,7 +6,7 @@ This is a LaTeX beamer theme for the University of Antwerp. It
 is designed to match the official UA templates for Microsoft
 PowerPoint.
 
-![dark title](https://raw.githubusercontent.com/nschloe/ua-beamer/master/doc/manual/figures/dark-page1.png)
+![dark title](/doc/manual/figures/dark-page1.png?raw=true "Optional Title")
 
 
 ### Installation
