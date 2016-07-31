@@ -18,4 +18,4 @@ install:
 # run test
 script:
   - cd doc/example/
-  - make test
+  - make
