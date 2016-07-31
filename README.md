@@ -71,6 +71,14 @@ All options are documented as part of the manual. To compile,
 cd doc/manual && make
 ```
 
+### Development
+
+To test the installation, run
+```
+make test
+```
+from the root directory of this theme.
+
 ### License
 
 This software is published under the [MIT license](https://en.wikipedia.org/wiki/MIT_License).

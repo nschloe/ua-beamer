@@ -14,7 +14,7 @@ TARGET:=uaBeamerExample
 default: main
 
 main:
-	@$(LATEX) $(TARGET)
+	@$(LATEX) -interaction=nonstopmode $(TARGET)
 
 .PHONY: clean
 
