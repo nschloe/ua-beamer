@@ -47,7 +47,7 @@ Some dummy text.
 \end{document}
 ```
 See
-[here](https://github.com/nschloe/ua-beamer/blob/master/doc/example/uaBeamerExample.tex)
+[here](/doc/example/uaBeamerExample.tex)
 for a more verbose example.
 
 Note that the official font of Universiteit Antwerpen is [Underware's Auto
