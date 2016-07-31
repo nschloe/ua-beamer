@@ -21,4 +21,7 @@
 *.nav
 *.snm
 *.vrb
+*.thm
+*.bcf
+*.xml
 example/uaBeamerExample.pdf
