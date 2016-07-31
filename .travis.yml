@@ -4,23 +4,15 @@ dist: trusty
 
 language: generic
 
-virtualenv:
-  system_site_packages: true
-
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get -y install texlive-latex-base texlive-latex-extra
+  - sudo apt-get -y install texlive-latex-base texlive-latex-extra latex-beamer
 
 # manually install important TeX dependencies
 install:
   # beamer
-  - export TEXMFLOCAL=/tmp/texmf/ && mkdir -p $TEXMFLOCAL
-  - wget http://mirrors.ctan.org/macros/latex/contrib/beamer.zip -O /tmp/beamer.zip
-  - unzip /tmp/beamer.zip -d $TEXMFLOCAL
-  # move the theme into TEXMFLOCAL too
-  - pwd
-  - ls -al
-  - mkdir -p $TEXMFLOCAL/tex/latex/
+  - export TEXMFLOCAL=/tmp/texmf/ && mkdir -p $TEXMFLOCAL/tex/latex/
+  # move the theme into TEXMFLOCAL
   - cp -ar * $TEXMFLOCAL/tex/latex/
   - texhash
 
